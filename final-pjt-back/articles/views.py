@@ -34,6 +34,15 @@ def card_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def card_mylist(request):
+    if request.method == 'GET':
+        cards = Card.objects.filter(user=request.user.pk)
+        serializer = CardListSerializer(cards, many=True)
+        return Response(serializer.data)
+
+
 @api_view(['GET', 'DELETE', 'PUT'])
 def card_detail(request, card_pk):
     card = get_object_or_404(Card, pk=card_pk)

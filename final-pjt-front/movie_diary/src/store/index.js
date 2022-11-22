@@ -143,6 +143,22 @@ export default new Vuex.Store({
         .catch((error) => {
           console.log(error)
         })
+    },
+    getArticleMyList(context){
+      axios({
+        method: 'get',
+        url:'http://127.0.0.1:8000/api/v1/cards/my/',
+        headers: {
+          'Authorization': `Token ${context.state.token}`
+        }
+      })
+        .then((response) => {
+          console.log(response)
+          context.commit('GET_ARTICLE_LIST', response.data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   },
   modules: {
