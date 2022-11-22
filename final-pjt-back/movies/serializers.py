@@ -30,12 +30,19 @@ class MovieSimilarListSerializer(serializers.ModelSerializer):
 
 class MoviewithSimilarListSerializer(serializers.ModelSerializer):
 
+    class CardListSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Card
+            fields = '__all__'
+
     class GenreListSerializer(serializers.ModelSerializer):
 
         class Meta:
             model = Genre
             fields = '__all__'
     
+    card_set = CardListSerializer(many=True, read_only=True)
     similar_set = MovieSimilarListSerializer(many=True, read_only=True)
     genres = GenreListSerializer(many=True, read_only=True)
 
