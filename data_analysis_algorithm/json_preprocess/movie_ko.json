@@ -1,0 +1,700 @@
+[
+  {
+    "model": "movies.genre",
+    "pk": 28,
+    "fields": {
+      "name": "액션"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 12,
+    "fields": {
+      "name": "모험"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 16,
+    "fields": {
+      "name": "애니메이션"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 35,
+    "fields": {
+      "name": "코미디"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 80,
+    "fields": {
+      "name": "범죄"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 99,
+    "fields": {
+      "name": "다큐멘터리"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 18,
+    "fields": {
+      "name": "드라마"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10751,
+    "fields": {
+      "name": "가족"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 14,
+    "fields": {
+      "name": "판타지"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 36,
+    "fields": {
+      "name": "역사"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 27,
+    "fields": {
+      "name": "공포"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10402,
+    "fields": {
+      "name": "음악"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 9648,
+    "fields": {
+      "name": "미스터리"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10749,
+    "fields": {
+      "name": "로맨스"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 878,
+    "fields": {
+      "name": "SF"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10770,
+    "fields": {
+      "name": "TV 영화"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 53,
+    "fields": {
+      "name": "스릴러"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10752,
+    "fields": {
+      "name": "전쟁"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 37,
+    "fields": {
+      "name": "서부"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "블랙 아담",
+      "movie_id": 436270,
+      "release_date": "2022-10-19",
+      "overview": "기원전 가장 번성하고 위대한 고대 국가였지만 현재는 국제 군사 조직 인터갱의 독재 국가로 전락한 칸다크. 인터갱의 눈을 피해 고대 유물을 찾던 '아드리아나'는 우연히 5000년 동안 잠들어 있던 '블랙 아담'을 깨우게 된다.  엄청난 괴력과 스피드, 방탄 능력과 자유자재의 고공비행, 번개를 쏘는 능력까지. 온몸이 무기인 '블랙 아담'은 자신의 앞을 막아서는 인터갱들을 모조리 쓸어버리고 칸다크 국민들은 이에 열광한다. 한편, 그의 폭주를 막기 위해 호크맨, 닥터 페이트, 아톰 스매셔, 사이클론으로 구성된 히어로 군단 '저스티스 소사이어티'가 칸다크에 나타나는데...",
+      "poster_path": "/mEdMHGy1FfCUc7PskFO0tibm8jp.jpg",
+      "vote_count": 1138,
+      "vote_average": 6.9,
+      "genres": [
+        28,
+        14,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "블랙 팬서: 와칸다 포에버",
+      "movie_id": 505642,
+      "release_date": "2022-11-09",
+      "overview": "국왕이자 블랙 팬서인 티찰라의 죽음 이후 수많은 강대국으로부터 위협을 받게 된 와칸다. 라몬다, 슈리 그리고 나키아, 오코예, 음바쿠는 각자 사명감을 갖고 와칸다를 지키기 위해 외로운 싸움을 이어간다. 한편, 비브라늄의 패권을 둘러싼 미스터리한 음모와 함께 깊은 해저에서 모습을 드러낸 최강의 적 네이머와 탈로칸의 전사들은 와칸다를 향해 무차별 공격을 퍼붓기 시작하는데…",
+      "poster_path": "/3PCRWLeqp5y20k6XVzcamZR3BWF.jpg",
+      "vote_count": 704,
+      "vote_average": 7.5,
+      "genres": [
+        28,
+        12,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+      "title": "스마일",
+      "movie_id": 882598,
+      "release_date": "2022-09-23",
+      "overview": "기괴한 미소를 지으며 자신의 눈 앞에서 목숨을 끊는 환자를 목격한 정신과 의사 ‘로즈’. 그날 이후로 ‘로즈’의 일상에 설명할 수 없는 끔찍한 일들이 잇따라 발생한다. 일상을 덮친 공포에 발버둥치던 ‘로즈’는 이전에도 자신과 같은 일을 겪은 사람들이 있었고 그들 모두 끔찍한 죽음을 피할 수 없었다는 사실을 알게 된다. 시시각각 다가오는 죽음에서 벗어나기 위해 사투를 벌이던 로즈는 잊고 싶던 과거와 마주하게 되는데…",
+      "poster_path": "/8ncuVFt4e0M2NTTsoPtbxfWN5dO.jpg",
+      "vote_count": 595,
+      "vote_average": 6.8,
+      "genres": [
+        27,
+        9648,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+      "title": "에놀라 홈즈 2",
+      "movie_id": 829280,
+      "release_date": "2022-11-04",
+      "overview": "탐정이 된 후 첫 번째 사건을 수임한 에놀라. 하지만 실종된 소녀의 미스터리를 풀기 위해서는 친구들의 도움이 필요하다. 어쩌면 오빠 셜록의 도움까지도.",
+      "poster_path": "/S6fDnntDjduIWuLW2GcqFasobD.jpg",
+      "vote_count": 917,
+      "vote_average": 7.7,
+      "genres": [
+        9648,
+        12,
+        80
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+      "title": "온 더 라인",
+      "movie_id": 979924,
+      "release_date": "2022-10-31",
+      "overview": "진행자가 전화를 받는데, 이 전화에서 정체를 알 수 없는 사람이  쇼맨의 온 가족을 죽이겠다고 협박합니다. 사랑하는 사람들을 구하기 위해  라디오 진행자는 생존 게임을 해야 할 것이고  이길 수 있는 유일한 방법은 범인의 신원을 알아내는 것입니다.",
+      "poster_path": "/jVmWI8PqoVTHCnrLYAcyrclzeY0.jpg",
+      "vote_count": 116,
+      "vote_average": 6.4,
+      "genres": [
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+      "title": "서부 전선 이상 없다",
+      "movie_id": 49046,
+      "release_date": "2022-10-07",
+      "overview": "제1차 세계대전 당시 서부전선에서 싸운 독일군 청년의 강렬한 이야기.  젊은 사병과 전우들은 참호 속에서 사투를 벌이며,  처음 전쟁에 대해 느꼈던 환상과 도취감이  어떻게 절망과 공포로 변해가는지를 생생하게 체험한다.",
+      "poster_path": "/sNsmI4vQ1A6VG52dquTFx8oNTWk.jpg",
+      "vote_count": 805,
+      "vote_average": 7.8,
+      "genres": [
+        10752,
+        18,
+        28
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 7,
+    "fields": {
+      "title": "폴: 600미터",
+      "movie_id": 985939,
+      "release_date": "2022-08-11",
+      "overview": "내려갈 길이 끊겨버린 600미터 TV 타워 위에서  두 명의 친구가 살아남기 위해 펼치는 사상 최초의 고공 서바이벌 여기에서",
+      "poster_path": "/8huJowZK1t7MNLEKo3dgLAxmiLW.jpg",
+      "vote_count": 1741,
+      "vote_average": 7.3,
+      "genres": [
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 8,
+    "fields": {
+      "title": "폴링 포 크리스마스",
+      "movie_id": 833097,
+      "release_date": "2022-11-10",
+      "overview": "스키 여행 중 사고로 기억을 잃은 철없는 상속녀. 아내와 사별 후 힘든 상황에 놓인 남자와 딸의 포근한 보살핌 속에 크리스마스를 보낸다.",
+      "poster_path": "/6GkphwL9s6dZb3DoQS9OQ4LcPgY.jpg",
+      "vote_count": 191,
+      "vote_average": 6.8,
+      "genres": [
+        10749,
+        35
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 9,
+    "fields": {
+      "title": "오펀: 천사의 탄생",
+      "movie_id": 760161,
+      "release_date": "2022-07-27",
+      "overview": "엄청난 비밀을 숨긴 사이코패스가 에스토니아의 정신병동을 탈출, 부유한 가족의 실종된 딸 ‘에스더’로 사칭해 미국에 온다. 재회의 기쁨도 잠시, 어딘지 낯선 딸의 정체를 눈치챈 엄마는 가족을 지키기 위해 에스더와 맞서는데...  누구도 상상 못한 충격적인 반전이 기다린다!",
+      "poster_path": "/vKIhsEVEtLTwTkmLSDNi230Zr3Q.jpg",
+      "vote_count": 1299,
+      "vote_average": 6.8,
+      "genres": [
+        27,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 10,
+    "fields": {
+      "title": "오버도즈",
+      "movie_id": 896485,
+      "release_date": "2022-11-04",
+      "overview": "툴루즈 경찰서의 사라 벨라이슈 경감은 파리에서 온 리샤르 크로스 반장의 지휘하에 긴밀하게 얽힌 두 10대의 살인 사건을 수사한다. 상반되는 수사 방식에도 범인을 찾기 위해 어쩔 수 없이 합동 수사를 벌여야 하는 사라와 리샤르는 스페인과 프랑스에서 시간에 쫓기는 싸움을 벌인다.",
+      "poster_path": "/9RvM4wawLRlX608FgZr9kL8CLmy.jpg",
+      "vote_count": 76,
+      "vote_average": 6.5,
+      "genres": [
+        28,
+        80,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 11,
+    "fields": {
+      "title": "사라진 탄환 2",
+      "movie_id": 948276,
+      "release_date": "2022-11-10",
+      "overview": "누명을 벗은 천재 자동차 정비공 리노. 이제 그의 마음속에 남은 목표는 단 하나. 동생과 멘토를 죽인 비리 경찰들에게 복수하는 것이다.",
+      "poster_path": "/A84Usw0jwhh5RPAKZV7gwP532Fl.jpg",
+      "vote_count": 80,
+      "vote_average": 7.3,
+      "genres": [
+        28,
+        18,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 12,
+    "fields": {
+      "title": "투 킬 더 비스트",
+      "movie_id": 856245,
+      "release_date": "2022-04-28",
+      "overview": "열일곱 살 에밀리아는 이모 이네스의 호스텔에 도착하는데, 그곳에는 위험한 야수가 어슬렁거린다는 소문이 돌고 있다. 성(性)에 눈을 뜨기 위한 여정을 떠난 에밀리아는 야수를 죽이기 위해 자신의 과거와 맞서야만 한다.",
+      "poster_path": "/epmWB73CmhoNkHXTf9aAiMhJLhN.jpg",
+      "vote_count": 18,
+      "vote_average": 5.7,
+      "genres": [
+        9648,
+        14,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 13,
+    "fields": {
+      "title": "토르: 러브 앤 썬더",
+      "movie_id": 616037,
+      "release_date": "2022-07-06",
+      "overview": "이너피스를 위해 자아 찾기 여정을 떠난 천둥의 신 토르. 그러나 우주의 모든 신들을 몰살하려는 신 도살자 고르의 등장으로 토르의 안식년 계획은 산산조각 나 버린다. 토르는새로운 위협에 맞서기 위해 킹 발키리, 코르그, 그리고 전 여자친구 제인과 재회하게 되고, 그녀가 묠니르를 휘두르는 마이티 토르가 되어 나타나 모두를 놀라게 한다. 이제 팀 토르는 고르의 복수에 얽힌 미스터리를 밝히고 더 큰 전쟁을 막기 위한 전 우주적 스케일의 모험을 시작하는데...",
+      "poster_path": "/un8ZDtx2SMwNwXRYy65aItnNjab.jpg",
+      "vote_count": 4671,
+      "vote_average": 6.7,
+      "genres": [
+        14,
+        28,
+        35
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 14,
+    "fields": {
+      "title": "호커스 포커스 2",
+      "movie_id": 642885,
+      "release_date": "2022-09-27",
+      "overview": "누군가가 검은 불꽃 초에 불을 붙여 17세기에 활동했던 자매들을 되살린 지도 29년이 흘렀다. 이제 자매들은 원수를 갚으려 한다. 핼러윈 전날의 동이 터오기 전에 세일럼에서 대혼란을 일으키려는 마녀들을 막아설 사람은 세 고등학생뿐이다.",
+      "poster_path": "/xpDdvIaTHn38F17pPseL1MQI05B.jpg",
+      "vote_count": 1108,
+      "vote_average": 7.5,
+      "genres": [
+        14,
+        35,
+        10751
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 15,
+    "fields": {
+      "title": "왓쳐",
+      "movie_id": 807356,
+      "release_date": "2022-06-03",
+      "overview": "한 젊은 미국 여성이 남편과 함께 루마니아의 부쿠레슈티로 이사한 뒤 길 건너편 아파트에서 자신을 지켜보는 낯선 사람이 연쇄 살인범일 수도 있다고 의심을 하기 시작하면서 여성에게 벌어지는 공포스러운 이야기를 담은 영화",
+      "poster_path": "/6Hg1l0alQNdCbFSVodRyR78A84w.jpg",
+      "vote_count": 290,
+      "vote_average": 6.3,
+      "genres": [
+        9648,
+        53,
+        27
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 16,
+    "fields": {
+      "title": "피노키오",
+      "movie_id": 532639,
+      "release_date": "2022-09-07",
+      "overview": "목수 ‘제페토’의 간절한 소원으로 태어난 나무 인형 ‘피노키오’는  진짜 사람이 되기 위해 자신의 양심이 되어줄 귀뚜라미 ‘지미니’와 함께  진실되고 용감한 마음을 가지기로 약속한다.  그러나 거리의 교활한 여우의 꾀임에 넘어간 피노키오는 서커스단에 들어가게 되고, 이기적인 어른들의 욕심으로 철장에 갇혀버리고 만다.  한편, 사라진 피노키오를 찾기 위해 길을 나선 ‘제페토’는 폭우 속에 목숨을 잃을 위기에 처하고 마는데…",
+      "poster_path": "/aFVjf2zcFzoNgbDKDEHiIw2g1DR.jpg",
+      "vote_count": 1079,
+      "vote_average": 6.7,
+      "genres": [
+        14,
+        12,
+        10751
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 17,
+    "fields": {
+      "title": "테이크오버",
+      "movie_id": 944864,
+      "release_date": "2022-11-01",
+      "overview": "개인정보 탈취 음모를 발견한 뒤 살인 누명을 쓰게 된 화이트 해커. 경찰로부터 도주 중인 그녀가 자신을 협박하는 범죄자들의 정체를 밝히기 위해 싸운다.",
+      "poster_path": "/fNbsrrNSuSkfo3FyDNPp9DGkhgX.jpg",
+      "vote_count": 66,
+      "vote_average": 5.7,
+      "genres": [
+        28,
+        80,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 18,
+    "fields": {
+      "title": "디 인비테이션",
+      "movie_id": 830788,
+      "release_date": "2022-08-24",
+      "overview": "가족이 없는 이비는 우연히 DNA 검사를 받기로 결정한 후, 그녀가  몰랐던 먼 친척이 있음을 발견한다. 새로운 친척의 초대를 받은 이비는 멋진 영국 시골 결혼식에 참석을 하게 된다. 대저택의 영주인 월터를 만나게 되면서 그녀가 몰랐던 자신의 끔찍한 배경과 가족의 과거에 대한 어둡고 뒤틀린 비밀을 알게 되는데...",
+      "poster_path": "/jcTq6gIskCsHlKDvCKKouEfiU66.jpg",
+      "vote_count": 324,
+      "vote_average": 6.4,
+      "genres": [
+        27,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 19,
+    "fields": {
+      "title": "탑건: 매버릭",
+      "movie_id": 361743,
+      "release_date": "2022-05-24",
+      "overview": "최고의 파일럿이자 전설적인 인물 매버릭은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘 아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될지 모를 하늘 위 비행에 나서는데...",
+      "poster_path": "/jeqXUwNilvNqNXqAHsdwm5pEfae.jpg",
+      "vote_count": 4758,
+      "vote_average": 8.3,
+      "genres": [
+        28,
+        18
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 20,
+    "fields": {
+      "title": "선과 악의 학교",
+      "movie_id": 779782,
+      "release_date": "2022-10-19",
+      "overview": "절친 소피와 아가사는 어느 날 신비한 존재에 의해 마법 학교로 휩쓸려 간다. 이 학교는 미래의 동화 속 영웅과 악당을 키워내는 곳. 운명을 알 길 없는 이곳에서 두 친구의 우정은 계속될 수 있을까.",
+      "poster_path": "/xr3oGJYQWLunuw7L5myo4VT8DBz.jpg",
+      "vote_count": 604,
+      "vote_average": 7.3,
+      "genres": [
+        14,
+        28,
+        18
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 21,
+    "fields": {
+      "title": "스파이더맨: 노 웨이 홈",
+      "movie_id": 634649,
+      "release_date": "2021-12-15",
+      "overview": "미스테리오의 계략으로 세상에 정체가 탄로난 스파이더맨 피터 파커는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 닥터 스트레인지를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. 닥터 옥토퍼스를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 피터 파커는 사상 최악의 위기를 맞게 되는데…",
+      "poster_path": "/voddFVdjUoAtfoZZp2RUmuZILDI.jpg",
+      "vote_count": 15842,
+      "vote_average": 8,
+      "genres": [
+        28,
+        12,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 22,
+    "fields": {
+      "title": "쥬라기 월드: 도미니언",
+      "movie_id": 507086,
+      "release_date": "2022-06-01",
+      "overview": "공룡들의 터전이었던 이슬라 누블라 섬이 파괴된 후,  마침내 공룡들은 섬을 벗어나 세상 밖으로 출몰한다. 지상에 함께 존재해선 안 될 위협적 생명체인 공룡의 등장으로 인류 역사상 겪어보지 못한 사상 최악의 위기를 맞이한 인간들. 지구의 최상위 포식자 자리를 걸고 인간과 공룡의 최후의 사투가 펼쳐진다.",
+      "poster_path": "/odxdUZWZ7fBfy3ZRj063wuJnZvo.jpg",
+      "vote_count": 3850,
+      "vote_average": 7,
+      "genres": [
+        12,
+        28,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 23,
+    "fields": {
+      "title": "불릿 트레인",
+      "movie_id": 718930,
+      "release_date": "2022-07-03",
+      "overview": "운이 없기로 유명한 킬러 레이디버그는 초고속 열차에 탑승해 의문의 서류 가방을 가져오라는 미션을 받는다. 생각보다 쉽게 미션을 클리어한 후 열차에서 내리려는 그를 가로막는 것이 있었으니,  그것은 바로 전세계에서 몰려든 초특급 킬러들. 열차에서 내릴 수 없다면 목숨을 걸고 가방을 지켜야만 한다. 과연 레이디버그는 무사히 열차에서 내려 미션을 완수할 수 있을까?",
+      "poster_path": "/msh4N8dxHk4FeEPZ8VBqHQFQYjI.jpg",
+      "vote_count": 2337,
+      "vote_average": 7.5,
+      "genres": [
+        28,
+        35,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 24,
+    "fields": {
+      "title": "와일드 이즈 더 윈드",
+      "movie_id": 1033107,
+      "release_date": "2022-10-28",
+      "overview": "젊은 여성이 잔인하게 살해된 채 발견되면서 부패 경찰 두 명이 사건 수사에 착수한다. 그와 함께, 인종차별이 만연한 소도시에서는 사람들의 갈등이 극에 달하는데.",
+      "poster_path": "/rITxQBtnMpneZf8QzH1dqONQocx.jpg",
+      "vote_count": 32,
+      "vote_average": 5.9,
+      "genres": [
+        80,
+        18
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 25,
+    "fields": {
+      "title": "제미나이: 지구 최후의 날",
+      "movie_id": 575322,
+      "release_date": "2022-01-06",
+      "overview": "치명적인 바이러스로 지구의 식물들이 파괴된 지 3년 후 산소가 부족해지고 과학자들은 전 인류를 구하기 위해 새로운 행성을 찾는 미션을 받고 우주로 떠난다. 하지만, 우주선은 입력한 궤도와는 전혀 다른 방향으로 이끌려가 알 수 없는 행성에 고립되고 비행 멤버들은 상상할 수 없는 존재로부터 공격을 받기 시작하는데…!",
+      "poster_path": "/iVwd4NKcvWIfxP36DsCBHd7lqEE.jpg",
+      "vote_count": 168,
+      "vote_average": 5.7,
+      "genres": [
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 26,
+    "fields": {
+      "title": "강철의 연금술사 완결편: 최후의 연성",
+      "movie_id": 960704,
+      "release_date": "2022-06-24",
+      "overview": "엘릭 형제의 길고 파란만장했던 여정, 그 종지부를 찍을 완결편 2부작의 마지막 작품. 에드워드와 알폰스가 국가 전체를 뒤흔들 초월적인 위협에 맞선다.",
+      "poster_path": "/qJD1kg5vrKKllZaZWyELVdxdbid.jpg",
+      "vote_count": 120,
+      "vote_average": 6.3,
+      "genres": [
+        28,
+        12,
+        14
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 27,
+    "fields": {
+      "title": "프레이",
+      "movie_id": 766507,
+      "release_date": "2022-08-02",
+      "overview": "300년 전 아메리카, 용맹한 전사를 꿈꾸는 원주민 소녀 나루는 갑작스러운 곰의 습격으로 절체절명의 위기에 놓인 순간, 정체를 알 수 없는 외계 포식자 프레데터를 목격하게 된다.  자신보다 강한 상대를 향한 무자비한 사냥을 시작한 프레데터. 최첨단 기술과 무기로 진화된 외계 포식자 프레데터의 위협이 점점 다가오고 나루는 부족을 지키기 위해 자신만의 기지와 무기로 생존을 건 사투를 시작하는데…",
+      "poster_path": "/eicYAopFKOL3orcNTJZ4TGtZQQ1.jpg",
+      "vote_count": 4608,
+      "vote_average": 7.9,
+      "genres": [
+        53,
+        28,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 28,
+    "fields": {
+      "title": "스플라이스",
+      "movie_id": 37707,
+      "release_date": "2009-10-06",
+      "overview": "전도 유명한 과학자 커플 ‘클라이브’(애드리안 브로디)와 ‘엘사’(사라 폴리)는 난치병 치료용 단백질을 만드는 연구를 진행하던 중, 조류, 어류, 파충류, 갑각류 등의 다종(多種) DNA 결합체인 ‘프레드’ 와 ‘진저’를 탄생시켜 동물용 의약 단백질 생산을 가능케 한다.실험을 거듭하면서 유전자 재조합 기술은 발전하고, 다종 DNA 결합체와 인간 유전자의 결합이 가능한 수준에 이르자 과학계와 의학계에 놀라움을 선사하고 싶었던 두 커플은 위험한 실험을 시도한다.  제약회사의 경고에도 불구하고 다종의 결합체와 인간 여성의 DNA를 결합시키는 금기의 실험을 강행하여 인간도, 동물도 아닌 전혀 새로운 생명체인 ‘드렌’을 탄생시킨다. 단순한 생명체의 형태에서 빠른 세포분열을 일으키며 급속도로 성장한 드렌은 각 종(種)들의 특징을 드러내며 기이한 아름다움을 내뿜고, 마침내 인간의 ‘감정’까지 갖추게 되면서 본능적으로 이성인 클라이브와의 교감을 시도한다. 그러나 그녀는 일정기간이 지나면 성(性)의 전환을 이루는 특성을 가지고 있었고 누구도 예상하지 못했던 그녀의 변이는 치명적인 결말을 예고하는데……  줄거리 2. 새로운 종을 탄생시켜 의학계와 과학계는 물론, 세상을 놀라게 만들 경이로움을 선사하고 싶었던 과학자 부부 ‘클리브’(애드리안 브로디)와 ‘엘사’(사라 폴리). 제약회사의 경고에도 불구하고 인간 여성의 DNA와 조류, 어류, 파충류, 갑각류의 유전자를 결합하는 금기의 실험을 강행해 신 생명체인 ‘드렌’을 탄생시킨다. 빠른 세포분열을 일으키며 급속도로 성장한 드렌은 각 종(種)들의 특징을 드러내며 기이한 아름다움을 내뿜고, 마침내 인간의 ‘감정’까지 갖추게 되면서 본능적으로 이성인 클리브와의 교감을 시도한다. 그러나 그녀는 일정기간이 지나면 성(性)의 전환을 이루는 특성을 가지고 있었고 누구도 예상하지 못했던 그녀의 변이는 치명적인 결말을 예고하는데…",
+      "poster_path": "/jXNYvG6HEbkHdV3DjygkKmy8jyh.jpg",
+      "vote_count": 1869,
+      "vote_average": 5.8,
+      "genres": [
+        27,
+        878,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 29,
+    "fields": {
+      "title": "테리파이어",
+      "movie_id": 420634,
+      "release_date": "2016-03-15",
+      "overview": "할로윈 밤. 술마시고 진탕 놀다 귀가하던 타라와 돈은 광대 복장의 남자와 맞닥뜨린다. 이들은 할로윈 코스프레를 한 찌질남으로 치부하지만, 그는 수년 전 세상을 떠들썩하게 만든 광대 살인마였고 할로윈 밤에 다시 돌아온 것이었다. 두 사람은 광대 살인마의 표적이 되는데...",
+      "poster_path": "/nfRlQCl590F30L37aihuqBGBvaO.jpg",
+      "vote_count": 989,
+      "vote_average": 6.6,
+      "genres": [
+        27,
+        53
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 30,
+    "fields": {
+      "title": "원피스 필름 레드",
+      "movie_id": 900667,
+      "release_date": "2022-08-06",
+      "overview": "오직 목소리 하나로 전 세계를 사로잡은 디바 ‘우타’.  그녀가 모습을 드러내는 첫 라이브 콘서트가 음악의 섬 ‘엘레지아’에서 열리고  ‘루피’가 이끄는 밀짚모자 해적단과 함께 수많은 ‘우타’ 팬들로 공연장은 가득 찬다.  그리고 이 콘서트를 둘러싼 해적들과 해군들의 수상한 움직임이 시작되는데…  드디어 전세계가 애타게 기다리던 ‘우타’의 등장과 함께 노래가 울려 퍼지고,  그녀가 ‘샹크스의 딸’이라는 충격적인 사실이 드러난다.  ‘루피’, ‘우타’, ‘샹크스’, 세 사람의 과거가 그녀의 노랫소리와 함께 밝혀진다! 여기에서",
+      "poster_path": "/q9Ul66mQDGpAvqUrTZdSMSzym5w.jpg",
+      "vote_count": 179,
+      "vote_average": 7.4,
+      "genres": [
+        16,
+        12,
+        28,
+        14
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 31,
+    "fields": {
+      "title": "블랙 팬서",
+      "movie_id": 284054,
+      "release_date": "2018-02-13",
+      "overview": "유엔 폭탄 테러로 아버지를 잃은 와칸다의 왕자 티찰라는 시빌 워 이후 고국 와칸다로 돌아가 왕좌에 오른다. 와칸다의 새로운 지도자 블랙팬서가 된 그는 옛 연인이자 와칸다의 스파이 나키아, 호위 무사 오코예와 함께 최강 희귀 금속 비브라늄 폭탄 거래가 이뤄지는 부산을 찾는다. 폭탄 거래의 배후에 있는 인물은 와칸다와 묘종의 연이 있는 정체불명의 남자, 에릭 킬몽거. 그는 놀라운 위력으로 티찰라를 제압하고 와칸다의 새로운 왕이 되려 하고, 이에 블랙 팬서는 피할 수 없는 전쟁에 나서는데...",
+      "poster_path": "/iRkknrX0rRxZHSL79W2Rax0EFsL.jpg",
+      "vote_count": 19802,
+      "vote_average": 7.4,
+      "genres": [
+        28,
+        12,
+        878
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 32,
+    "fields": {
+      "title": "피기",
+      "movie_id": 848058,
+      "release_date": "2022-10-07",
+      "overview": "스페인 남부의 여름. 사라는 냉담한 가족들이 경영하는 정육점에 박혀 다른 누군가가 되는 것을 꿈꾼다. 설상가상 다른 여자아이들로부터 지속적인 괴롭힘을 당한다. 어느 날, 강에서 사라는 정체를 알 수 없는 낯선 사람이 사라를 괴롭혔던 아이들을 납치하는 것을 목격한다. 사라가 소리를 질러야 할까?",
+      "poster_path": "/kmCjZjm4CHuuJdwUdn3h93WqDdR.jpg",
+      "vote_count": 201,
+      "vote_average": 6.7,
+      "genres": [
+        18,
+        53,
+        27
+      ]
+    }
+  }
+]

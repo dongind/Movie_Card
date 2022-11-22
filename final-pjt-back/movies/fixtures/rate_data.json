@@ -1,0 +1,11 @@
+[
+  {
+    "model": "movies.rate",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "movie": 31,
+      "rate": 5
+    }
+  }
+]
