@@ -1,27 +1,34 @@
 <template>
   <div>
     <div class="col">
-    <div class="card">
-      <img :src="imgSrc" class="card-img-top" alt="...">
-      <div class="card-body">
-        <span class="date">{{ article.plannedAt }}</span>
-        <h5 class="card-title">{{ movieTitle }}</h5>
-        <p class="card-text">{{ article.content }}</p>
-      </div>
+      <div class="card">
+        <img :src="imgSrc" class="card-img-top" alt="...">
+        <div class="card-body">
+          <span class="date">{{ article.plannedAt }}</span>
+          <h5 class="card-title">{{ movieTitle }}</h5>
+          <p class="card-text">{{ article.content }}</p>
+        </div>
+        <div class="card-footer text-muted">{{ plannedAt }}</div>
       </div>
     </div>
+    <ArticleDetail/>
   </div>
 </template>
 
 <script>
+import ArticleDetail from '@/components/ArticleDetail.vue'
 export default {
   name: 'ArticleItem',
+  components: {
+    ArticleDetail
+  },
   props: {
     article: Object,
   },
   data() {
     return {
-      movieTitle: this.article.movie.title
+      movieTitle: this.article.movie.title,
+      plannedAt: this.article.planned_at
     }
   },
   computed: {
