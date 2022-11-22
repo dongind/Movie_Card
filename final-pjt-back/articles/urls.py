@@ -7,6 +7,7 @@ urlpatterns = [
 
     # cards
     path('cards/', views.card_list),
+    path('cards/my/', views.card_mylist),
     path('cards/<int:card_pk>/', views.card_detail),
     path('<int:card_pk>/like/', views.like_card),
 
