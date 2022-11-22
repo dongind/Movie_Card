@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import CardListSerializer, CardSerializer, CommentSerializer, RateMovieCardSerializer
+from .serializers import CardListSerializer, CardSerializer, CommentSerializer, RateMovieCardSerializer, CommentListSerializer
 from .models import Card, Comment
 from movies.models import Movie
 
@@ -71,7 +71,7 @@ def like_card(request, card_pk):
 def comment_list(request):
     if request.method == 'GET':
         comments = get_list_or_404(Comment)
-        serializer = CommentSerializer(comments, many=True)
+        serializer = CommentListSerializer(comments, many=True)
         return Response(serializer.data)
 
 

@@ -24,7 +24,7 @@ class CommentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
-        read_only_fields = ('card',)
+        read_only_fields = ('card_id',)
 
 class CommentSerializer(serializers.ModelSerializer):
 
