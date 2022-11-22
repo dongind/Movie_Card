@@ -97,7 +97,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to first</button>
-                <button class="btn btn-primary" @click="createArticle" data-bs-dismiss="modal">Submit form</button>
+                <button class="btn btn-primary" @click="createArticle" :data-bs-toggle="{'modal': false}">Submit form</button>
               </div>
             </div>
             
@@ -364,10 +364,14 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    practice() {
+      $(`#${this.modalId1}`).modal("show")
     }
   },
   created() {
     this.getMovieDetail()
+    this.practice()
   }
 }
 </script>
