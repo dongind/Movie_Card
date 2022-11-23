@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import router from '@/router'
+// import router from '@/router'
 
 Vue.use(Vuex)
 
@@ -63,7 +63,7 @@ export default new Vuex.Store({
         .then((response) => {
           // 회원가입이 성공하면 Home으로 이동 => 추후 아이템 선택창으로 이동
           context.commit('SAVE_TOKEN', response.data.key)
-          router.push({ name: "home"})
+          // router.push({ name: "home"})
         })
         .catch((error) => {
           console.log(error)

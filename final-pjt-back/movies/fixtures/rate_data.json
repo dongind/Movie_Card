@@ -7,5 +7,32 @@
       "movie": 31,
       "rate": 5
     }
+  },
+  {
+    "model": "movies.rate",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "movie": 21,
+      "rate": 3
+    }
+  },
+  {
+    "model": "movies.rate",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "movie": 21,
+      "rate": 1
+    }
+  },
+  {
+    "model": "movies.rate",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "movie": 2,
+      "rate": 4
+    }
   }
 ]
