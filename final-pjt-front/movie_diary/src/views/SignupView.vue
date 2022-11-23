@@ -79,6 +79,7 @@ export default {
       // 확인용 비밀번호 일치 여부 확인
       isValidPassword2: false,
       selectedMoviesId: [],
+      key: null,
     }
   },
   computed: {
@@ -127,6 +128,8 @@ export default {
     },
     getPopularMovies() {
       this.$store.dispatch('getPopularMovies')
+      this.key = `Token ${this.$store.state.token}`
+      console.log(this.key)
     },
     selectMovie(selectedMovie) {
       if (selectedMovie.isClicked) {
@@ -137,25 +140,54 @@ export default {
       }
     },
     baseRating(){
-      const API_KEY = `Token ${this.$store.state.token}`
-      // console.log('됨ㅋ')
-      for (const id in this.selectedMoviesId) {
+      const API_URL = 'http://127.0.0.1:8000/api/v1/cards/'
+      const API_KEY = this.key
+      let today = new Date()
+      let year = today.getFullYear()
+      let month = today.getMonth()
+      let date = today.getDay()
+      // console.log(String(year+'-'+month+'-'+date))
+      // console.log(today)
+      // console.log(API_KEY)
+      this.$store.dispatch('getArticleList')
+      for (let id of this.selectedMoviesId) {
+        // console.log(id)
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+          url: API_URL,
           headers: {'Authorization': API_KEY},
           data: {
-            'movie_pk': id,
-            'rate': 3
+            'movie': id,
+            'content': null,
+            'planned_at': String(year+'-'+month+'-'+date),
+            'is_watched': false,
           },
         })
-        .then(() => {
-          this.$store.dispatch('getArticleList')
-          this.$router.push('home')
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          .then(() =>{
+            console.log('됨ㅋ')
+            axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+              headers: {'Authorization': API_KEY},
+              data: {
+                'movie_pk': id,
+                'rate': 3
+              },
+            })
+              .then(() => {
+                // this.$store.dispatch('getArticleList')
+                this.$router.push('home')
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          })
+          .catch((error) => {
+            console.log(error)
+            console.log(error.response.data)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+          })
       }
     }
   }
