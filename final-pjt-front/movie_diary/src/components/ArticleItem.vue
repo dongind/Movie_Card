@@ -1,20 +1,17 @@
 <template>
   <div>
     <div class="col">
-      <div class="card">
-        <!-- 구조 ㅄ 같으면, 다 지워도 됨요..ㅎㅎ ㅜ -->
-        <!-- 이미지를 클릭할 경우, 이동하는 방식 -->
+      <div class="card" data-bs-toggle="modal" :data-bs-target="modalBtn1">
         <!-- click에 들어간 함수는, 
         순서대로 
         1. 클릭된 카드의 정보 가져오는 함수 : getCardDetail()
         2. 클릭된 카드의 이미지를 불러오기 위한 함수 : modalImgSrcSet()
         3. 클릭된 카드 중에서 현재 유저와 같은 id 값을 가지는 rate 값을 불러오는 함수 : rateLoad()
         -->
-        <img :src="imgSrc" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#cardModal" @click="[getCardDetail(), modalImgSrcSet(), rateLoad()]">
+        <img :src="imgSrc" class="card-img-top" alt="...">
         <div class="card-body">
-          <span class="date">{{ article.plannedAt }}</span>
-          <h5 class="card-title">{{ movieTitle }}</h5>
-          <p class="card-text">{{ article.content }}</p>
+          <p class="card-title">{{ movieTitle }}</p>
+          <p class="card-text">{{ rate }}</p>
         </div>
         <div class="card-footer text-muted">{{ plannedAt }}</div>
       </div>
@@ -22,32 +19,86 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <!-- 첫번째 모달 : Movie Detail -->
+    <div class="modal fade" :id="modalId1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Card Detail</h1>
+          <!-- <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Movie Card</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div> -->
+          <div class="modal-body p-0">
+            <img :src="imgSrc" alt="" width="100%">
           </div>
-          <div class="modal-body">
-            <!-- <img :src="imgSrc" class="card-img-top" alt="..."> -->
-            <p>{{ this.detailCard?.movie.title }}</p>
-            <!-- 시청 안했을 경우, 예정된 시청일을 보여줌 -->
-            <div v-if="!this.detailCard?.is_watched">
-              <p>시청예정일 : {{ this.detailCard?.planned_at }}</p>
-            </div>
-            <!-- 시청했을 경우, 하단의 watched change 버튼을 누르면 후기를 작성할 수 있도록 전환 -->
-            <div v-if="this.detailCard?.is_watched">
-              <p>봤구나!</p>
-              <!-- <p v-for="set of this.detailCard?.movie.rate_set" :key="set.id">별점 : {{ set.id }}</p> -->
-              <p>평점 : {{ this?.detailCardRate }}</p>
+          <div class="mx-3 my-3"  style="text-align: start">{{ article.planned_at }}</div>
+          <div v-if="article.is_watched">
+            <div class="mx-3" style="text-align: start">
+              <p>{{ article.content }}</p>
+              <p>{{ rate }}</p>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" v-if="!this.detailCard?.is_watched" @click="watchedChange">Watched change</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button class="btn btn-primary" :data-bs-target="modalBtn2" data-bs-toggle="modal">Update</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 두번째 모달 : Movie Update / Delete -->
+    <div class="modal fade" :id="modalId2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Card Update</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <div class="form-control" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="plannedAt" required>{{ planWord }}</label><br>
+                <input type="date" v-model="plannedAt" id="plannedAt" :class="{'form-control': true, 'is-invalid': isWrongDate}">
+                <div class="invalid-feedback">
+                  계획 일자를 작성하시오
+                </div>
+              </div>
+              <!-- 만일 이전에 본 작품이라면 -->
+              <div v-if="isWatched">
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">영화 감상평</label>
+                  <textarea :class="{'form-control': true, 'is-invalid': isWrongContent}" id="validationTextarea" placeholder="감상평을 작성해주세요" v-model="content" required></textarea>
+                  <div class="invalid-feedback">
+                    영화 감상평을 작성하시오
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="validationRate" :class="{'form-label':true, 'text-danger': isWrongRate}">영화 평점</label>
+  
+                  <div id="myform">
+                    <fieldset>
+                      <input type="radio" name="reviewStar" value="5" :id="radioId1" @click="getRate" :checked="isSelected[4]"><label
+                        :for="radioId1">★</label>
+                      <input type="radio" name="reviewStar" value="4" :id="radioId2" @click="getRate" :checked="isSelected[3]"><label
+                        :for="radioId2">★</label>
+                      <input type="radio" name="reviewStar" value="3" :id="radioId3" @click="getRate" :checked="isSelected[2]"><label
+                        :for="radioId3">★</label>
+                      <input type="radio" name="reviewStar" value="2" :id="radioId4" @click="getRate" :checked="isSelected[1]"><label
+                        :for="radioId4">★</label>
+                      <input type="radio" name="reviewStar" value="1" :id="radioId5" @click="getRate" :checked="isSelected[0]"><label
+                        :for="radioId5">★</label>
+                    </fieldset>
+                  </div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to Card</button>
+                <button class="btn btn-primary" :data-bs-dismiss="{'modal': false}" @click="updateArticle">Update</button>
+              </div>
         </div>
       </div>
     </div>
@@ -71,87 +122,208 @@ export default {
       detailCardId: null,
       movieTitle: this.article.movie.title,
       plannedAt: this.article.planned_at,
+      content: this.article.content,
       modalImgSrc: null,
       detailCardRate: null,
+      rate: null,
+      isWrongDate: false,
+      isWrongContent: false,
+      isWrongRate: false,
+      isSelected: [false, false, false, false, false],
+      movieId: this.article.movie.pk
     }
   },
   computed: {
     imgSrc() {
       return `https://image.tmdb.org/t/p/original${this.article.movie.poster_path}`
-    }
+    },
+    modalId1() {
+      return `modalId1-${this.article.id}`
+    },
+    modalId2() {
+      return `modalId2-${this.article.id}`
+    },
+    modalBtn1() {
+      return `#modalId1-${this.article.id}`
+    },
+    modalBtn2() {
+      return `#modalId2-${this.article.id}`
+    },
+    planWord() {
+      if (this.isWatched) {
+        return '영화 감상일'
+      } else {
+        return '영화 감상 계획일'
+      }
+    },
+    nowDate() {
+      return new Date()
+    },
+    isWatched() {
+      const plannedAt = new Date(this.plannedAt)
+      if (this.plannedAt === null) {
+        return false
+      } else if (plannedAt < this.nowDate) {
+        return true
+      } else {
+        return false
+      }
+    },
+    radioId1() {
+      return `rate1-${this.article.id}`
+    },
+    radioId2() {
+      return `rate2-${this.article.id}`
+    },
+    radioId3() {
+      return `rate3-${this.article.id}`
+    },
+    radioId4() {
+      return `rate4-${this.article.id}`
+    },
+    radioId5() {
+      return `rate5-${this.article.id}`
+    },
   },
   methods:{
-    // 클릭된 카드의 정보를 불러오는 메서드
-    getCardDetail() {
-      const cardId = this.article.id
-      axios({
-        method: 'get',
-        url: `http://127.0.0.1:8000/api/v1/cards/${cardId}/`,
+    getMovieRate() {
+      const rates = this.article.movie.rate_set
+      rates.forEach((rate) => {
+        if (rate.user === this.article.user) {
+          this.rate = rate.rate
+          this.isSelected[Number(this.rate) - 1] = true
+          console.log(this.isSelected)
+        }
       })
-        .then((response) => {
-          console.log(response.data)
-          this.detailCardId = response.data.id
-          console.log(this.detailCardId)
-          // this.detailCard = response.data.filter(id=this.detailCardId)
-          console.log(this.detailCard)
-        })
-        .catch(() => {
-        })
     },
-    // 클릭된 카드 모달 내에서 isWatched의 상태를 바꿔주는 메서드
-    watchedChange() {
-      this.detailCard.is_watched = !this.detailCard.is_watched
+    isValidated() {
+      if (this.plannedAt === null) {
+        this.isWrongDate = true
+      } else {
+        this.isWrongDate = false
+      }
+      if (this.content === null) {
+        this.isWrongContent = true
+      } else {
+        this.isWrongContent = false
+      }
+      if (this.rate === null) {
+        this.isWrongRate = true
+      } else {
+        this.isWrongRate = false
+      }
     },
-    // 클릭된 카드의 영화 이미지를 따로 저장하는 메서드
-    modalImgSrcSet() {
-      // console.log(this.modalImgSrc)
-      this.modalImgSrc = `https://image.tmdb.org/t/p/original${this.detailCard?.movie.poster_path}`
-      // console.log(this.modalImgSrc)
+    getRate(event) {
+      const value = Number(event.target.value)
+      this.rate = value
+      for (const i in this.isSelected) {
+        if (Number(i) + 1 === value) {
+          this.isSelected[i] = true 
+        } else {
+          this.isSelected[i] = false
+        }
+      }
     },
-    // 클릭된 카드의 영화에서 rate_set 내에서 현재 user의 id값과 같은 user가 작성한 rate값을 불러오는 메서드 
-    rateLoad() {
-      for (let set of this.detailCard.movie.rate_set) {
-        if (set.user === this.detailCard.user) {
-          this.detailCardRate = set.rate
-          console.log(this.detailCardRate)
+    updateArticle() {
+      const API_URL = `http://127.0.0.1:8000/api/v1/cards/${this.article.id}/`
+      const API_KEY = `Token ${this.$store.state.token}`
+      this.isValidated()
+      if (!this.isWatched) {
+        if (this.isWrongDate) {
+          return
+        } else {
+          // axios 연결 => card 제작 요청
+          axios({
+            method: 'put',
+            url: API_URL,
+            headers: {'Authorization': API_KEY},
+            data: {
+            'movie': this.movieId,
+            'content': null,
+            'planned_at': this.plannedAt,
+            'is_watched': false,
+            },
+          })
+            .then(() =>{
+              this.$store.dispatch('getArticleList')
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }
+      } else {
+        if (this.isWrongContent === true || this.isWrongDate === true || this.isWrongRate === true) {
+          console.log(this.isWrongDate, this.isWrongContent, this.isWrongRate)
+        } else {
+          // axios 연결 => card 제작 요청
+          axios({
+            method: 'put',
+            url: API_URL,
+            headers: {'Authorization': API_KEY},
+            data: {
+            'movie': this.movieId,
+            'content': this.content,
+            'planned_at': this.plannedAt,
+            'is_watched': true,
+            },
+          })
+            .then(() =>{
+              // axios 연결 => rate 기록 요청
+              axios({
+                method: 'put',
+                url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+                headers: {'Authorization': API_KEY},
+                data: {
+                  'movie_pk': this.movieId,
+                  'rate': this.rate
+                },
+              })
+              .then(() => {
+                this.$store.dispatch('getArticleList')
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+            })
+            .catch((error) => {
+              console.log(error)
+            })
         }
       }
     }
   },
   created() {
+    this.getMovieRate()
   }
 }
 </script>
 
 <style>
-.card-stats {
-  grid-area: stats;
-}
-.card-body {
-  grid-area: text;
-  margin: 25px;
-}
-.card-body span {
-  color: rgb(255, 7, 110);
-  font-size:13px;
-}
-.card-body .card-text{
-  color: grey;
-  font-size:15px;
-  font-weight: 300;
-}
-.card-body h5 {
-  margin-top:0px;
-  font-size:28px;
-}
-.card-stats {
-  grid-area: stats; 
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
 
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: rgb(255, 7, 110);
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
 }
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
 </style>

@@ -371,9 +371,6 @@ export default {
           console.log(error)
         })
     },
-    practice() {
-      $(`#${this.modalId1}`).modal("show")
-    },
     getCardItem() {
       // this.datax = cardInfo.content
       // console.log('됨ㅋ')
@@ -381,7 +378,6 @@ export default {
   },
   created() {
     this.getMovieDetail()
-    this.practice()
   }
 }
 </script>

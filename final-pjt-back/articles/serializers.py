@@ -3,14 +3,23 @@ from .models import Card, Comment
 from movies.models import Movie, Rate
 from django.db.models import Prefetch
 
+class RateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Rate
+        fields = '__all__'
+        read_only_fields = ('user_id',)
 
 class CardListSerializer(serializers.ModelSerializer):
 
     class MovieTitleSerializer(serializers.ModelSerializer):
-
+        
+        rate_set = RateSerializer(many=True, read_only=True)
+        
         class Meta:
             model = Movie
-            fields = ('title', 'poster_path', 'backdrop_path')
+            fields = ('pk', 'title', 'poster_path', 'backdrop_path', 'rate_set')
+
 
     movie = MovieTitleSerializer(read_only=True)
     username = serializers.CharField(source='user.username', read_only=True)
@@ -40,12 +49,6 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = '__all__'
 
-class RateSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Rate
-        fields = '__all__'
-        read_only_fields = ('user_id',)
 
 class RateMovieCardSerializer(serializers.ModelSerializer):
 
