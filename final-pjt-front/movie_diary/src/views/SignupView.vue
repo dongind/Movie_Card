@@ -26,17 +26,48 @@
                 비밀번호를 정확히 입력해주세요.
               </div>
             </div>
-            <input class="form-control" type="submit" value="회원가입">
+            <input class="form-control" type="submit" value="회원가입" data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getPopularMovies">
           </div>
         </form>
       </div>
     </form>
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getPopularMovies">
+      Launch demo modal
+    </button> -->
+    <!-- Modal -->
+    <div class="modal fade" id="SelectFirstMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Select First Movie</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <FirstMovie
+              v-for= "movie in popularRecommend" :key="movie.id"
+              :movie="movie"
+              @select-movie="selectMovie"
+            />
+            선택 영화 목록 : {{ selectedMoviesId }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" @click="baseRating">Movie Rating</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import FirstMovie from '@/components/FirstMovie.vue'
+import axios from 'axios'
 export default {
   name: 'SignupView',
+  components: {
+    FirstMovie,
+  },
   data() {
     return {
       username: null,
@@ -47,7 +78,13 @@ export default {
       isValidPassword1: false,
       // 확인용 비밀번호 일치 여부 확인
       isValidPassword2: false,
+      selectedMoviesId: [],
     }
+  },
+  computed: {
+    popularRecommend() {
+      return this.$store.state.popularRecommend
+    },
   },
   methods: {
     isValid() {
@@ -86,6 +123,39 @@ export default {
         this.$store.dispatch('signUp', payload)
       } else {
         console.log('no')
+      }
+    },
+    getPopularMovies() {
+      this.$store.dispatch('getPopularMovies')
+    },
+    selectMovie(selectedMovie) {
+      if (selectedMovie.isClicked) {
+        this.selectedMoviesId.push(selectedMovie.id)
+      } else {
+        const index = this.selectedMoviesId.indexOf(selectedMovie.id)
+        this.selectedMoviesId.splice(index, 1)
+      }
+    },
+    baseRating(){
+      const API_KEY = `Token ${this.$store.state.token}`
+      // console.log('됨ㅋ')
+      for (const id in this.selectedMoviesId) {
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+          headers: {'Authorization': API_KEY},
+          data: {
+            'movie_pk': id,
+            'rate': 3
+          },
+        })
+        .then(() => {
+          this.$store.dispatch('getArticleList')
+          this.$router.push('home')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       }
     }
   }
