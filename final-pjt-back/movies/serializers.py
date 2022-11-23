@@ -10,12 +10,27 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 class MovieGenreListSerializer(serializers.ModelSerializer):
 
+    class CardListSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Card
+            fields = '__all__'
+
+    card_set = CardListSerializer(many=True, read_only=True)
+
     class Meta:
         model = Movie
         fields = '__all__'
 
 class MovieSerializer(serializers.ModelSerializer):
 
+    class CardListSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Card
+            fields = '__all__'
+
+    card_set = CardListSerializer(many=True, read_only=True)
     card = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:

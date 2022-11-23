@@ -9,7 +9,7 @@ import axios from 'axios'
 export default {
   name: 'CardItem',
   props: {
-    cardId: Number,
+    card: Object,
   },
   data() {
     return {
@@ -24,12 +24,18 @@ export default {
     getCardItem() {
       axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/v1/cards/${this.cardId}`,
-        headers: {'Authorization': `Token ${this.$store.state.token}`}
+        url: `http://127.0.0.1:8000/api/v1/cards/${this.card.id}/`,
+        // headers: {'Authorization': `Token ${this.$store.state.token}`}
       })
         .then((response) => {
           this.userId = response.data.user
           this.content = response.data.content
+          // console.log('됨ㅋ ')
+          const cardInfo = {
+            'userId': this.userId,
+            'content': response.data.content,
+          }
+          this.$emit('get-card-item', cardInfo)
         })
     }
   },

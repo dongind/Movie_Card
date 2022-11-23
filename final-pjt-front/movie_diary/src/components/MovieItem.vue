@@ -26,10 +26,14 @@
               <span v-for="genre in detailMovie.genres" :key="genre.id">{{ genre.name }} </span>
               <hr>
               <h5>다른 사람의 Card</h5>
-                <CardItem
-                  v-for="cardId in cardItems" :key="cardId"
-                  :cardId="cardId"
-                />
+                <p>
+                  안녕
+                  <CardItem
+                    v-for="card in cardItems" :key="card.pk"
+                    :card="card"
+                    @get-card-item="getCardItem"
+                  />
+                </p>
               <h5>비슷한 영화</h5>
               <SimilarMovieItem v-for="similarMovie in similarMovies" :key="similarMovie.pk" :similarMovie="similarMovie" @get-similar-movie="getSimilarMovie"/>
             </div>
@@ -140,7 +144,8 @@ export default {
       movieOverview: this.movie.overview,
       moviePosterPath: this.movie.poster_path,
       movieId: this.movie.id,
-      cardItems: this.movie.card_set
+      cardItems: this.movie?.card_set,
+      datax: null,
     }
   },
   computed: {
@@ -346,6 +351,7 @@ export default {
       }
     },
     getSimilarMovie(movieId) {
+      // console.log(this.movie)
       const API_KEY = this.$store.state.token
       axios({
         method: 'get',
@@ -367,6 +373,10 @@ export default {
     },
     practice() {
       $(`#${this.modalId1}`).modal("show")
+    },
+    getCardItem() {
+      // this.datax = cardInfo.content
+      // console.log('됨ㅋ')
     }
   },
   created() {
