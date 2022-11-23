@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getArticleList() {
-      this.$store.dispatch('getArticleMyList')
+      this.$store.dispatch('getArticleList')
     }
   },
   created() {
