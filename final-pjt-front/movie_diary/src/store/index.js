@@ -14,23 +14,17 @@ export default new Vuex.Store({
     latestRecommend: [],
     popularRecommend: [],
     articles: [],
-  },
-  getters: {
-    isLoggedIn(state) {
-      if (state.token) {
-        return true
-      } else {
-        return false
-      }
-    },
+    isLoggedIn: false,
   },
   mutations: {
     SAVE_TOKEN(state, token) {
       state.token = token
+      state.isLoggedIn = true
       localStorage.setItem("token", token)
     },
     LOG_OUT(state) {
       state.token = null
+      state.isLoggedIn = false
       localStorage.setItem("token", null)
     },
     GET_MY_MOVIES(state, movies) {
