@@ -169,13 +169,23 @@ def movie_popular(request):
     return Response(popular_serializers.data)
 
 
-@api_view(['POST'])
+@api_view(['POST', 'PUT'])
 def movie_rate(request):
-    rate_serializer = MovieRateSerializer(data=request.data)
-    if rate_serializer.is_valid(raise_exception=True):
+    if request.method == 'POST':
+        rate_serializer = MovieRateSerializer(data=request.data)
+        if rate_serializer.is_valid(raise_exception=True):
+            movie_pk = int(request.data['movie_pk'])
+            print(movie_pk)
+            movie = get_object_or_404(Movie, pk=movie_pk)
+            rate_serializer.save(movie=movie, user=request.user)
+            # return Response(rate_serializer, status=status.HTTP_201_CREATED)
+            return Response()
+    if request.method == 'PUT':
         movie_pk = int(request.data['movie_pk'])
-        print(movie_pk)
         movie = get_object_or_404(Movie, pk=movie_pk)
-        rate_serializer.save(movie=movie, user=request.user)
-        # return Response(rate_serializer, status=status.HTTP_201_CREATED)
-        return Response()
+        rate = Rate.objects.filter(user=request.user, movie=movie)[0]
+        
+        rate_serializer = MovieRateSerializer(rate, data=request.data)
+        if rate_serializer.is_valid(raise_exception=True):
+            rate_serializer.save()
+            return Response(rate_serializer.data)
