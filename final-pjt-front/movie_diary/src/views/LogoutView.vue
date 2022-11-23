@@ -12,7 +12,7 @@ export default {
   name: 'LogoutView',
   computed: {
     isLoggedIn() {
-      return this.$store.state.isLoggedIn
+      return this.$store.getters.isLoggedIn
     }
   },
   methods: {
