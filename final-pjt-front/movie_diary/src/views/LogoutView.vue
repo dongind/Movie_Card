@@ -11,13 +11,13 @@
 export default {
   name: 'LogoutView',
   computed: {
-    isLoggedin() {
-      return this.$store.getters.isLoggedin
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn
     }
   },
   methods: {
     logOut() {
-      if (this.isLoggedin) {
+      if (this.isLoggedIn) {
         this.$store.dispatch('logOut')
         alert('로그아웃 되었습니다.')
         this.$router.push({ name: 'home' })
@@ -28,7 +28,7 @@ export default {
     }
   },
   created() {
-    console.log(this.isLoggedin)
+    console.log(this.isLoggedIn)
     this.logOut()
     this.$router.push({ name: 'login' })
   } 
