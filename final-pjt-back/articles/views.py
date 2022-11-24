@@ -21,17 +21,36 @@ from movies.models import Movie
 def card_list(request):
     if request.method == 'GET':
         cards = get_list_or_404(Card)
+        cardss = get_object_or_404(Card, pk=4)
+        # cards[0].movie.rate_set에서 순회
+        print(cardss.movie)
+        print(cards[3].movie)
+        print(request.user.pk)
         serializer = CardListSerializer(cards, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = CardSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
+        # print(request.user.pk)
+        # print(request.data['movie'])
+        can_write = True
+        movie = get_object_or_404(Movie, pk=request.data['movie'])
+        # print(movie)
+        card_list = get_list_or_404(Card)
+        for card in card_list:
+            if request.user.pk == card.user.pk:
+                if card.movie.pk == int(request.data['movie']):
+                    # print(card.movie)
+                    if card.is_watched:
+                        can_write = False
+                    # print(card.is_watched)
+        if can_write:
+            serializer = CardSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
 
-            movie_pk = int(request.data['movie'])
-            movie = get_object_or_404(Movie, pk=movie_pk)
-            serializer.save(user=request.user, movie=movie)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+                movie_pk = int(request.data['movie'])
+                movie = get_object_or_404(Movie, pk=movie_pk)
+                serializer.save(user=request.user, movie=movie)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
