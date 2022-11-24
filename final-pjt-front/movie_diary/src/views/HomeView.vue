@@ -64,6 +64,7 @@ font-style: normal;
   justify-content: space-between;
   background-color: #f8f8f8;
   color: rgb(56, 56, 56);
+  border-top-right-radius: 20px;
   
 }
 
@@ -135,5 +136,6 @@ font-style: normal;
   color: black;
   /* background-color: rgb(85, 85, 85); */
   background-color: rgb(224, 224, 224);
+  border-top-right-radius: 20px;
 }
 </style>

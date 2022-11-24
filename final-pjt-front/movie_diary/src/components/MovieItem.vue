@@ -28,13 +28,14 @@
                 <h1>{{ movieTitle }}</h1>
                 <p style="font-weight:bold">영화 상영일 : {{ movieReleaseDate }}</p>
                 <p>{{ movieOverview }}</p>
-                <p><span class="heart">♥</span> <span> {{ detailMovie?.vote_average }} ({{ detailMovie?.vote_count }}명)</span></p>
-                <span style="font-weight:bold">장르 : </span>
-                <span v-for="genre in detailMovie.genres" :key="genre.id">{{ genre.name }} </span>
+                <div v-if="isdetail">
+                  <p><span class="heart">♥</span> <span> {{ detailMovie?.vote_average }} ({{ detailMovie?.vote_count }}명)</span></p>
+                  <span style="font-weight:bold">장르 : </span>
+                  <span v-for="genre in detailMovie.genres" :key="genre.id">{{ genre.name }} </span>
+                </div>
               </div>
             </div>
             <!-- detail 정보가 있는 경우 -->
-
             <hr>
             <h5>다른 사람의 Card</h5>
               <p>
@@ -46,12 +47,13 @@
               </p>
               <hr>
             <h5>비슷한 영화</h5>
-            <div class="container">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
-                <SimilarMovieItem v-for="similarMovie in similarMovies" :key="similarMovie.pk" :similarMovie="similarMovie" @get-similar-movie="getSimilarMovie"/>
+            <div v-if="isdetail">
+              <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                  <SimilarMovieItem v-for="similarMovie in similarMovies" :key="similarMovie.pk" :similarMovie="similarMovie" @get-similar-movie="getSimilarMovie"/>
+                </div>
               </div>
             </div>
-
             <!-- detail 정보가 없는 경우 -->
             <div v-if="!isdetail">
               <p>정보가 부족합니다.</p>

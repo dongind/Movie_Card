@@ -15,6 +15,7 @@ export default new Vuex.Store({
     popularRecommend: [],
     popularRandomRecommend: [],
     articles: [],
+    isLoading: false,
   },
   getters:{
     isLoggedIn(state) {
@@ -35,7 +36,7 @@ export default new Vuex.Store({
       localStorage.setItem("token", null)
     },
     GET_MY_MOVIES(state, movies) {
-      state.userRecommend = movies 
+      state.userRecommend = movies
     },
     GET_LATEST_MOVIES(state, movies) {
       state.latestRecommend = movies
@@ -48,6 +49,9 @@ export default new Vuex.Store({
     },
     GET_RANDOM_POPULAR_MOVIES(state, movies) {
       state.popularRandomRecommend = movies
+    },
+    IS_LOADED(state) {
+      state.isLoading = true
     }
   },
   actions: {
@@ -95,6 +99,9 @@ export default new Vuex.Store({
       })
         .then((response) => {
           context.commit("GET_MY_MOVIES", response.data)
+        })
+        .then(() => {
+          context.commit("IS_LOADED")
         })
         .catch((error) => {
           console.log(error)
