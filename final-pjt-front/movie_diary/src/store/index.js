@@ -140,7 +140,6 @@ export default new Vuex.Store({
         }
       })
         .then((response) => {
-          console.log(response)
           context.commit('GET_ARTICLE_LIST', response.data)
         })
         .catch((error) => {

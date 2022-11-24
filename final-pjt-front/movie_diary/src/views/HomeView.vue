@@ -1,9 +1,16 @@
 <template>
   <div>
-    <h1>home</h1>
-    <ArticleList/>
-    <hr>
-    <MovieList/>
+    <div class="article-page">
+      <p class="head-title">Movie Card</p>
+      <div class="article-container shadow">
+        <div class="card-side">
+          <ArticleList/>
+        </div>
+        <div class="movie-side">
+          <MovieList/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,28 +23,66 @@ export default {
     ArticleList,
     MovieList,
   },
-  computed: {
-    // isLoggedin() {
-    //   return this.$store.getters.isLoggedin
-    // }
-  },
-  methods: {
-    // isLogin() {
-    //   if (this.isLoggedin === true) {
-    //     console.log(this.isLoggedin)
-    //   } else {
-    //     alert('로그인이 필요한 서비스 입니다.')
-    //     this.$router.push({ name: 'login'})
-    //   }
-    // }
-  },
-  mounted() {
-    console.log(this.isLoggedin)
-    // this.isLogin()
-  },
 }
 </script>
 
 <style>
 
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.head-title{
+  font-size: 50px;
+  font-family: 'Chosunilbo_myungjo';
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.article-page {
+    width: 100vw;
+    height: 100vh;
+    background: #eff0f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-container{
+ 
+ background:#ffffff ;
+ width: 90%;
+ height: 80%;
+ display: flex;
+ flex-direction: row;
+ box-shadow: 10px black;
+ border-radius: 10px;
+
+}
+
+.card-side {
+  width: 70%;
+  height: 100%;
+  overflow: auto;
+  padding: 5px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: darkgray;
+}
+
+.movie-side {
+  width: 29%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5%;
+  margin-left: 0.5%;
+}
 </style>
