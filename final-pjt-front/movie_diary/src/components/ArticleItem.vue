@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="col">
-      <div class="card" data-bs-toggle="modal" :data-bs-target="modalBtn1">
+      <div class="card" data-bs-toggle="modal" :data-bs-target="modalBtn1" @click="newIsUpdated">
         <!-- click에 들어간 함수는, 
         순서대로 
         1. 클릭된 카드의 정보 가져오는 함수 : getCardDetail()
@@ -51,7 +51,7 @@
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Card Update</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" v-if="!isUpdated">
             
             <div class="form-control" novalidate>
               <div class="mb-3">
@@ -72,7 +72,6 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationRate" :class="{'form-label':true, 'text-danger': isWrongRate}">영화 평점</label>
-  
                   <div id="myform">
                     <fieldset>
                       <input type="radio" name="reviewStar" value="5" :id="radioId1" @click="getRate" :checked="isSelected[4]"><label
@@ -87,17 +86,22 @@
                         :for="radioId5">★</label>
                     </fieldset>
                   </div>
-              </div>
+                </div>
               </div>
             </div>
-
           </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-danger" @click="deleteArticle" data-bs-dismiss="modal">Delete</button>
-                <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to Card</button>
-                <button class="btn btn-primary" :data-bs-dismiss="{'modal': false}" @click="updateArticle">Update</button>
-              </div>
+          <div class="modal-footer" v-if="!isUpdated">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-danger" @click="deleteArticle" data-bs-dismiss="modal">Delete</button>
+            <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to Card</button>
+            <button class="btn btn-primary" :data-bs-dismiss="{'modal': false}" @click="updateArticle">Update</button>
+          </div>
+          <div class="modal-body" id="modal-body" v-if="isUpdated">
+            <p>성공적으로 수정되었습니다.</p>
+          </div>
+          <div class="modal-footer" id="modal-footer" v-if="isUpdated">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
@@ -125,7 +129,8 @@ export default {
       isWrongContent: false,
       isWrongRate: false,
       isSelected: [false, false, false, false, false],
-      movieId: this.article.movie.pk
+      movieId: this.article.movie.pk,
+      isUpdated: false
     }
   },
   computed: {
@@ -240,6 +245,7 @@ export default {
           })
             .then(() =>{
               this.$store.dispatch('getArticleList')
+              this.isUpdated = true
             })
             .catch((error) => {
               console.log(error)
@@ -275,6 +281,7 @@ export default {
                 })
                 .then(() => {
                   this.$store.dispatch('getArticleList')
+                  this.isUpdated = true
                 })
                 .catch((error) => {
                   console.log(error)
@@ -291,6 +298,7 @@ export default {
                 })
                 .then(() => {
                   this.$store.dispatch('getArticleList')
+                  this.isUpdated = true
                 })
                 .catch((error) => {
                   console.log(error)
@@ -335,6 +343,9 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    newIsUpdated() {
+      this.isUpdated = false
     }
   },
   created() {

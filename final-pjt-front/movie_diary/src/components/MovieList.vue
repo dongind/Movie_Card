@@ -1,19 +1,23 @@
 <template>
   <div>
     <h1>MovieList</h1>
-    <button @click="switchUserRecommend">
-      사용자 맞춤 추천
-    </button>
-    <button @click="switchLatestRecommend">
-      최신 영화
-    </button>
-    <button @click="switchPopularRecommend">
-      인기 영화
-    </button>
-    <button data-bs-toggle="modal" data-bs-target="#genreModal">
-      장르 별 영화
-    </button>
-    <div v-if="isUserRecommend">
+    <div class="movie-selection">
+      <div @click="switchUserRecommend">
+        사용자 추천
+      </div>
+      <div @click="switchLatestRecommend">
+        최신 영화
+      </div>
+      <div @click="switchPopularRecommend">
+        인기 영화
+      </div>
+      <div data-bs-toggle="modal" data-bs-target="#genreModal">
+        장르별 영화
+      </div>
+
+    </div>
+
+    <div v-if="isUserRecommend" class="movie-list">
       <h2>사용자 맞춤 추천</h2>
       <MovieItem
       v-for="movie in userRecommend" :key="movie.id"
@@ -21,7 +25,7 @@
       type="userRecommend"
       />
     </div>
-    <div v-if="isLatestRecommend">
+    <div v-if="isLatestRecommend" class="movie-list">
       <h2>최신 영화</h2>
       <MovieItem
       v-for="movie in latestRecommend" :key="movie.id"
@@ -29,7 +33,7 @@
       type="latestRecommend"
       />
     </div>
-    <div v-if="isPopularRecommend">
+    <div v-if="isPopularRecommend" class="movie-list">
       <h2>인기 영화</h2>
       <MovieItem
       v-for= "movie in popularRecommend" :key="movie.id"
@@ -37,7 +41,7 @@
       type="popularRecommend"
       />
     </div>
-    <div v-if="isGenreRecommend">
+    <div v-if="isGenreRecommend" class="movie-list">
       <h2>장르별 추천 영화</h2>
       <MovieItem
       v-for= "movie in genreRecommend" :key="movie.id"
@@ -175,5 +179,32 @@ export default {
 </script>
 
 <style>
+.movie-list{
+  width: 100%;
+  height: 70vh;
+  display:flex;
+  flex-direction: column;
+  overflow: auto;
+  font-family: nanumsquare;
+}
+.movie-list::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
 
+.movie-list::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #2f3542; /* 스크롤바의 색상 */
+    
+    /* border-radius: 10px; */
+}
+
+.movie-list::-webkit-scrollbar-track {
+    background: gray;  /*스크롤바 뒷 배경 색상*/
+}
+
+.movie-selection {
+  display: flex;
+  flex-direction: row;
+  font-family:nanumsquare;
+}
 </style>

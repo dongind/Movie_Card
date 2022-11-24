@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div>
-      <img :src="imgSrc" alt="" height="300px">
+    <div class="movie-item" @click="newIsCreated" data-bs-toggle="modal" :data-bs-target="modalBtn1">
+      <img :src="imgSrc" alt="" height="150px">
       <p>{{ movie.title }}</p>
     </div>   
     
@@ -51,16 +51,16 @@
     </div>
     <!-- 두번째 Modal -->
     <div class="modal fade" :id="modalId2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-scrollable modal-xl">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Movie Card 작성</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body" id="modal-body">
+          <div class="modal-body" id="modal-body" v-if="!isCreated">
             <!-- 영화 정보 -->
-            <img :src="imgSrc" alt="Loading" height="300px">
-            <h2>{{ movieTitle }}</h2>
+            <!-- <img :src="imgSrc" alt="Loading" height="300px">
+            <h2>{{ movieTitle }}</h2> -->
             <!-- Movie Card Form -->
             <div class="form-control" novalidate>
               <div class="mb-3">
@@ -98,18 +98,22 @@
                   </div>
               </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to first</button>
-                <button class="btn btn-primary" @click="createArticle" :data-bs-toggle="{'modal': false}">Submit form</button>
-              </div>
             </div>
-            
+          </div>
+          <div class="modal-footer" v-if="!isCreated">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to first</button>
+            <button class="btn btn-primary" @click="createArticle" :data-bs-toggle="{'modal': false}">Submit form</button>
+          </div>
+          <div class="modal-body" id="modal-body" v-if="isCreated">
+            <p>성공적으로 생성되었습니다.</p>
+          </div>
+          <div class="modal-footer" id="modal-footer" v-if="isCreated">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
-    <a class="btn btn-primary" data-bs-toggle="modal" :href="modalBtn1" role="button">Movie Detail</a>
     <hr>
   </div>
 </template>
@@ -146,6 +150,7 @@ export default {
       movieId: this.movie.id,
       cardItems: this.movie?.card_set,
       datax: null,
+      isCreated: false,
     }
   },
   computed: {
@@ -294,6 +299,7 @@ export default {
           })
             .then(() =>{
               this.$store.dispatch('getArticleList')
+              this.isCreated = true
             })
             .catch((error) => {
               console.log(error)
@@ -328,6 +334,7 @@ export default {
               })
               .then(() => {
                 this.$store.dispatch('getArticleList')
+                this.isCreated = true
               })
               .catch((error) => {
                 console.log(error)
@@ -371,9 +378,11 @@ export default {
           console.log(error)
         })
     },
+    newIsCreated() {
+      this.isCreated = false
+    },
     getCardItem() {
-      // this.datax = cardInfo.content
-      // console.log('됨ㅋ')
+
     }
   },
   created() {
@@ -410,5 +419,11 @@ export default {
     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+.movie-item {
+  display: flex;
+  flex-direction: row;
+}
 
 </style>
