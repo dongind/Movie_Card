@@ -344,7 +344,7 @@ export default {
                 'movie_pk': this.movieId,
               }
             })
-              .then((response) => {
+              .then(() => {
                 // console.log(response)
               })
               .catch((error) => {
