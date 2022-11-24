@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div class="col">
+    <div class="card shadow-card"
+      data-bs-toggle="modal" :data-bs-target="modalBtn1" @click="newIsUpdated"
+      :style="{ backgroundImage: 'linear-gradient(30deg, rgba(0, 0, 0, 1)0%, rgba(0, 0, 0, 0.8)30%, rgba(0, 0, 0, 0.3)70% ),url(' + this.imgSrc + ')'}">
+      <p>{{ movieTitle }}</p>
+      <div>
+        <span class="star">★ </span>
+        <span> {{ rate }}</span>
+      </div>
+    </div>
+    
+    <!-- <div class="col">
       <div class="card" data-bs-toggle="modal" :data-bs-target="modalBtn1" @click="newIsUpdated">
-        <!-- click에 들어간 함수는, 
-        순서대로 
-        1. 클릭된 카드의 정보 가져오는 함수 : getCardDetail()
-        2. 클릭된 카드의 이미지를 불러오기 위한 함수 : modalImgSrcSet()
-        3. 클릭된 카드 중에서 현재 유저와 같은 id 값을 가지는 rate 값을 불러오는 함수 : rateLoad()
-        -->
         <img :src="imgSrc" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-title">{{ movieTitle }}</p>
@@ -15,29 +19,39 @@
         </div>
         <div class="card-footer text-muted">{{ plannedAt }}</div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Modal -->
     <!-- 첫번째 모달 : Movie Detail -->
     <div class="modal fade" :id="modalId1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <!-- <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Movie Card</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div> -->
           <div class="modal-body p-0">
-            <img :src="imgSrc" alt="" width="100%">
-          </div>
-          <div class="mx-3 my-3"  style="text-align: start">{{ article.planned_at }}</div>
-          <div v-if="article.is_watched">
-            <div class="mx-3" style="text-align: start">
-              <p>{{ article.content }}</p>
-              <p>{{ rate }}</p>
+            <div class="modal-container">
+              <img :src="imgSrc" alt="" height="750px">
+              <div class="content" width="400px">
+                <div class="content-position my-3">
+                  <span class="mx-3 my-3"  style="text-align: start; font-weight:bold;"> 관람 계획 일자 :</span>
+                  <span>{{ article.planned_at }} </span>
+                  <div v-if="article.is_watched">
+                    <div class="mx-3" style="text-align: start">
+                      <div>
+                        <span style="font-weight:bold;"> 평점 : </span>
+                        <span>{{ rate }}</span>
+                      </div>
+                      <p class="my-3"> {{ article.content }}</p>
+                    </div>
+                </div>
+                </div>
+                <div class="btn-position">
+                  <button type="button" class="btn btn-secondary text-white me-3" data-bs-dismiss="modal">Close</button>
+                  <button class="btn btn-primary" :data-bs-target="modalBtn2" data-bs-toggle="modal">Update</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" :data-bs-target="modalBtn2" data-bs-toggle="modal">Update</button>
           </div>
         </div>
       </div>
@@ -91,8 +105,8 @@
             </div>
           </div>
           <div class="modal-footer" v-if="!isUpdated">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-danger" @click="deleteArticle" data-bs-dismiss="modal">Delete</button>
+            <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-danger text-white" @click="deleteArticle" data-bs-dismiss="modal">Delete</button>
             <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to Card</button>
             <button class="btn btn-primary" :data-bs-dismiss="{'modal': false}" @click="updateArticle">Update</button>
           </div>
@@ -100,7 +114,7 @@
             <p>성공적으로 수정되었습니다.</p>
           </div>
           <div class="modal-footer" id="modal-footer" v-if="isUpdated">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -253,7 +267,7 @@ export default {
         }
       } else {
         if (this.isWrongContent === true || this.isWrongDate === true || this.isWrongRate === true) {
-          console.log(this.isWrongDate, this.isWrongContent, this.isWrongRate)
+          // console.log(this.isWrongDate, this.isWrongContent, this.isWrongRate)
         } else {
           // axios 연결 => card 제작 요청
           axios({
@@ -331,7 +345,7 @@ export default {
               }
             })
               .then((response) => {
-                console.log(response)
+                // console.log(response)
               })
               .catch((error) => {
                 console.log(error)
@@ -380,6 +394,64 @@ export default {
 }
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+.card {
+  width: 170px;
+  height: 240px;
+  background-size: cover;
+  box-shadow: 5px;
+  border: none;
+  color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 20px;
+  transition: all 0.5s;
+  cursor:pointer;
+}
+.card:hover {
+  transform: scale(1.1)
+}
+
+.card p {
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.star {
+  padding-left: 10px;
+  color: rgba(250, 208, 0, 0.99);
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-container img {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.shadow-card{
+    -webkit-box-shadow: 27px 43px 43px -26px rgba(17, 17, 17, 0.39);
+    -moz-box-shadow: 30px 30px 43px -26px rgba(8, 8, 8, 1);
+    box-shadow: 20px 20px 20px -26px rgb(0, 0, 0);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-position {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 10px;
+  margin-left: 90px;
 }
 
 </style>

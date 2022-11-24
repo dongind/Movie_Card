@@ -1,8 +1,14 @@
 <template>
   <div>
     <div class="movie-item" @click="newIsCreated" data-bs-toggle="modal" :data-bs-target="modalBtn1">
-      <img :src="imgSrc" alt="" height="150px">
-      <p>{{ movie.title }}</p>
+      <img :src="imgSrc" alt="" height="150px" style="border-radius:5px;">
+      <div class="simple-detail">
+        <p class="movie-title">{{ movie.title }}</p>
+        <div>
+          <span class="heart">♥</span> <span> {{ detailMovie?.vote_average }} ({{ detailMovie?.vote_count }}명)</span>
+        </div>
+        <!-- <div>{{ overview }}</div> -->
+      </div>
     </div>   
     
     <!-- Modal -->
@@ -11,39 +17,48 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Movie Detail</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- 카드 본문 -->
           <div class="modal-body" :id="modalBody">
             <p hidden id="scrollHeading1">#</p>
-            <img :src="imgSrc" alt="Loading" height="500px">
-            <h1>{{ movieTitle }}</h1>
-            <p>영화 상영일 : {{ movieReleaseDate }}</p>
-            <p>{{ movieOverview }}</p>
-            <!-- detail 정보가 있는 경우 -->
-            <div v-if="isdetail">
-              <span>장르 : </span>
-              <span v-for="genre in detailMovie.genres" :key="genre.id">{{ genre.name }} </span>
-              <hr>
-              <h5>다른 사람의 Card</h5>
-                <p>
-                  안녕
-                  <CardItem
-                    v-for="card in cardItems" :key="card.pk"
-                    :card="card"
-                    @get-card-item="getCardItem"
-                  />
-                </p>
-              <h5>비슷한 영화</h5>
-              <SimilarMovieItem v-for="similarMovie in similarMovies" :key="similarMovie.pk" :similarMovie="similarMovie" @get-similar-movie="getSimilarMovie"/>
+            <div class="detail-content">
+              <img :src="imgSrc" alt="Loading" height="500px">
+              <div class="mx-4">
+                <h1>{{ movieTitle }}</h1>
+                <p style="font-weight:bold">영화 상영일 : {{ movieReleaseDate }}</p>
+                <p>{{ movieOverview }}</p>
+                <p><span class="heart">♥</span> <span> {{ detailMovie?.vote_average }} ({{ detailMovie?.vote_count }}명)</span></p>
+                <span style="font-weight:bold">장르 : </span>
+                <span v-for="genre in detailMovie.genres" :key="genre.id">{{ genre.name }} </span>
+              </div>
             </div>
+            <!-- detail 정보가 있는 경우 -->
+
+            <hr>
+            <h5>다른 사람의 Card</h5>
+              <p>
+                <CardItem
+                  v-for="card in cardItems" :key="card.pk"
+                  :card="card"
+                  @get-card-item="getCardItem"
+                />
+              </p>
+              <hr>
+            <h5>비슷한 영화</h5>
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                <SimilarMovieItem v-for="similarMovie in similarMovies" :key="similarMovie.pk" :similarMovie="similarMovie" @get-similar-movie="getSimilarMovie"/>
+              </div>
+            </div>
+
             <!-- detail 정보가 없는 경우 -->
             <div v-if="!isdetail">
               <p>정보가 부족합니다.</p>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
             <button class="btn btn-primary" :data-bs-target="modalBtn2" data-bs-toggle="modal">Movie Card 만들기</button>
           </div>
         </div>
@@ -51,7 +66,7 @@
     </div>
     <!-- 두번째 Modal -->
     <div class="modal fade" :id="modalId2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Movie Card 작성</h1>
@@ -101,7 +116,7 @@
             </div>
           </div>
           <div class="modal-footer" v-if="!isCreated">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
             <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to first</button>
             <button class="btn btn-primary" @click="createArticle" :data-bs-toggle="{'modal': false}">Submit form</button>
           </div>
@@ -298,7 +313,7 @@ export default {
             },
           })
             .then(() =>{
-              console.log('되나?')
+              // console.log('되나?')
               this.$store.dispatch('getArticleList')
               this.isCreated = true
             })
@@ -309,7 +324,7 @@ export default {
         }
       } else {
         if (this.isWrongContent === true || this.isWrongDate === true || this.isWrongRate === true) {
-          console.log(this.isWrongDate, this.isWrongContent, this.isWrongRate)
+          // console.log(this.isWrongDate, this.isWrongContent, this.isWrongRate)
         } else {
           // axios 연결 => card 제작 요청
           axios({
@@ -426,10 +441,32 @@ export default {
 .movie-item {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
+  transition: all 0.5s;
+  
+}
+
+.movie-item:hover {
+  background-color: rgb(28, 28, 31);
+  color: white;
+  
 }
 
 .movie-detail {
   color: black;
+}
+
+.simple-detail {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: row;
+}
+.heart {
+  color:red;
 }
 
 </style>

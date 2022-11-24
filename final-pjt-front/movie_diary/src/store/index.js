@@ -153,7 +153,7 @@ export default new Vuex.Store({
         url:'http://127.0.0.1:8000/api/v2/movies/popular/random/',
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           context.commit('GET_RANDOM_POPULAR_MOVIES', response.data)
         })
         .catch((error) => {

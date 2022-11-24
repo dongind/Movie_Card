@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="row row-cols-1 row-cols-md-6 g-2">
-      <ArticleItem
-        v-for="article in articles" :key="article.id"
-        :article="article"
-      />
+    <div class="container articles">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2">
+        <ArticleItem
+          v-for="article in articles" :key="article.id"
+          :article="article"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -37,26 +39,27 @@ export default {
 </script>
 
 <style>
-.article-list{
+.articles {
   width: 100%;
-  height: 70vh;
+  height: 83vh;
   display:flex;
   flex-direction: column;
   overflow: auto;
   font-family: nanumsquare;
 }
-.article-list::-webkit-scrollbar {
-    width: 8px;  /* 스크롤바의 너비 */
+.articles::-webkit-scrollbar {
+    display: none;
+    width: 10px;  /* 스크롤바의 너비 */
 }
 
-.article-list::-webkit-scrollbar-thumb {
-    height: 30%; /* 스크롤바의 길이 */
+.articles::-webkit-scrollbar-thumb {
+    height: 30px; /* 스크롤바의 길이 */
     background: #2f3542; /* 스크롤바의 색상 */
     
     /* border-radius: 10px; */
 }
 
-.article-list::-webkit-scrollbar-track {
-    background: gray;  /*스크롤바 뒷 배경 색상*/
+.articles::-webkit-scrollbar-track {
+    background: rgb(85, 85, 85);  /*스크롤바 뒷 배경 색상*/
 }
 </style>

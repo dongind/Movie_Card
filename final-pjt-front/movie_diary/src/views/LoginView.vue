@@ -1,12 +1,12 @@
 <template>
   <div class="page-container">
     <div class="login-form-container shadow">
-      <div class="login-form-right-side">
+      <div class="login-form-right-side-login">
         <div class="top-logo-wrap">
         </div>
-        <h1>Movie Card</h1>
-        <h5>Remember the movie with</h5>
-        <p>We all like movies, but often miss movies in our busy life. Let's plan, record and read the film for those of us with Movie Card</p>
+        <h1 style="color:white">Movie Card</h1>
+        <h5 style="color:white">Remember the movie with</h5>
+        <p style="color:white">We all like movies, but often miss movies in our busy life. Let's plan, record and read the film for those of us with Movie Card</p>
       </div>
       <div class="login-form-left-side">
         <div class="login-top-wrap">
@@ -169,26 +169,28 @@ export default {
     border-radius: 10px;
 
 }
-.login-form-right-side{
+.login-form-right-side-login{
     width: 50%; 
     border-radius: 10px 0px 0px 10px;
-    padding:75px;
+    padding:60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: rgb(0, 0, 0);
-    /* background-image: ; */
+    background-image: linear-gradient(80deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.98)),url(@/assets/background1.png) ;
+    width: 100%;
+    background-size: cover;
 }
 .login-form-right-side h1{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width:100%;
     text-align: right;
     opacity: 0.9;
 
 }
 .login-form-right-side h5{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width:100%;
     text-align: right;
     opacity: 0.9;
@@ -208,7 +210,7 @@ export default {
     align-items: center;
     padding:40px;
     background: rgb(255,255,255);
-background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(287degrgb(94, 94, 94)10%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
 }
 .login-form-left-side .login-top-wrap{
     display: flex;
