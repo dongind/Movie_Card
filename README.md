@@ -112,10 +112,10 @@
 3. 서비스 Overview : Home
 ![image](https://user-images.githubusercontent.com/109324469/203865700-b6abf3c3-fb23-4162-aa38-e2fa0bae81eb.png)
 
-4. 서비스 Overview : filtering (장르)
+4. 서비스 Overview : filtering (최신, 인기)
 ![image](https://user-images.githubusercontent.com/109324469/203865729-00553da8-5ea0-4965-81d6-a3239b1fb451.png)
 
-5. 서비스 Overview : filtering (최신, 인기)
+5. 서비스 Overview : filtering ()
 ![image](https://user-images.githubusercontent.com/109324469/203865761-7ca99370-baa4-443c-a478-6eab42fbcf23.png)
 
 6. 서비스 Overview : movie_detail
