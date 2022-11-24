@@ -3,16 +3,16 @@
     <h1>MovieList</h1>
     <div class="movie-selection">
       <div @click="switchUserRecommend">
-        사용자 추천
+        <p>사용자 추천 | </p> 
       </div>
       <div @click="switchLatestRecommend">
-        최신 영화
+        <p>최신 영화 | </p> 
       </div>
       <div @click="switchPopularRecommend">
-        인기 영화
+        <p>인기 영화 | </p> 
       </div>
       <div data-bs-toggle="modal" data-bs-target="#genreModal">
-        장르별 영화
+        <p>장르별 영화 </p>
       </div>
 
     </div>
@@ -181,7 +181,7 @@ export default {
 <style>
 .movie-list{
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   display:flex;
   flex-direction: column;
   overflow: auto;
