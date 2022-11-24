@@ -62,6 +62,7 @@
 3. 서비스 플로우 차트
 
 ![image-20221125055200784](C:\Users\82105\Desktop\마지막\final_pjt_new\README.assets\image-20221125055200784.png)
+![image-20221125055148942](https://user-images.githubusercontent.com/109324469/203861714-d13a44d5-f9fd-476b-b876-728fe383a56d.png)
 
 
 
