@@ -9,9 +9,7 @@
       />
     </span>
     <h4>선택 영화 목록 : {{ selectedMoviesId }}</h4>
-    <router-link :to="{'name': 'home'}">
-      <button type="button" class="btn btn-primary" @click="baseRating">Movie Rating</button>
-    </router-link>
+    <button type="button" class="btn btn-primary" @click="baseRating">Movie Rating</button>
   </div>
 </template>
 
@@ -81,7 +79,7 @@ export default {
               },
             })
               .then(() => {
-                this.$router.push('home')
+                this.$router.push({ name: 'home'})
               })
               .catch((error) => {
                 console.log(error)
