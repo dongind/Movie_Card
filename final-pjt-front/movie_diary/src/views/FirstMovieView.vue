@@ -1,15 +1,20 @@
 <template>
-  <div>
-    <h2>흥미롭게 즐기셨던 영화를 최대 5까지 골라주세요.</h2>
+  <div class="first-container">
+    <div class="first-movies container-sm">
+      <h1 class="text-center mb-3 mt-5">흥미롭게 즐기셨던 영화를 최대 5까지 골라주세요.</h1>
+      <button type="button" class="btn btn-dark mt-3 text-white" width="30px" @click="baseRating">{{ selectedMoviesId.length }}개</button>
+    </div>
     <span>
-      <FirstMovieItem
-        v-for= "movie in popularRandomRecommend" :key="movie.id"
-        :movie="movie"
-        @select-movie="selectMovie"
-      />
+      <div class="container articles">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+          <FirstMovieItem
+            v-for= "movie in popularRandomRecommend" :key="movie.id"
+            :movie="movie"
+            @select-movie="selectMovie"
+          />
+        </div>
+      </div>
     </span>
-    <h4>선택 영화 목록 : {{ selectedMoviesId }}</h4>
-    <button type="button" class="btn btn-primary" @click="baseRating">Movie Rating</button>
   </div>
 </template>
 
@@ -38,7 +43,7 @@ export default {
     getRandomPopularMovies() {
       this.$store.dispatch('getRandomPopularMovies')
       this.key = `Token ${this.$store.state.token}`
-      console.log(this.key)
+      // console.log(this.key)
     },
     selectMovie(selectedMovie) {
       if (selectedMovie.isClicked) {
@@ -100,5 +105,13 @@ export default {
 </script>
 
 <style>
+.first-movies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.first-container {
+  background-color: #eff0f2;;
+}
 </style>

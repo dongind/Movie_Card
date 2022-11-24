@@ -3,12 +3,12 @@
     <form @submit.prevent="signUp">
       <div class="container">
         <div class="login-form-container shadow">
-          <div class="login-form-right-side">
+          <div class="login-form-right-side-signup">
             <div class="top-logo-wrap">
             </div>
-            <h1>Movie Card</h1>
-            <h5>Remember the movie with</h5>
-            <p>We all like movies, but often miss movies in our busy life. Let's plan, record and read the film for those of us with Movie Card</p>
+            <h1 style="color:white">Movie Card</h1>
+            <h5 style="color:white">Remember the movie with</h5>
+            <p style="color:white">We all like movies, but often miss movies in our busy life. Let's plan, record and read the film for those of us with Movie Card</p>
           </div>
           <div class="login-form-left-side">
             <div class="login-top-wrap">
@@ -109,7 +109,7 @@ export default {
         }
         this.$store.dispatch('signUp', payload)
       } else {
-        console.log('no')
+        // console.log('no')
       }
     },
   }
@@ -174,7 +174,7 @@ export default {
     border-radius: 10px;
 
 }
-.login-form-right-side{
+.login-form-right-side-signup{
     width: 50%; 
     border-radius: 10px 0px 0px 10px;
     padding:75px;
@@ -183,7 +183,10 @@ export default {
     justify-content: center;
     align-items: center;
     color: rgb(0, 0, 0);
-    /* background-image: ; */
+    background-image: linear-gradient(80deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.98)),url(@/assets/background3.jpg) ;
+    width: 100%;
+    background-size: cover;
+
 }
 .login-form-right-side h1{
     color: rgb(0, 0, 0);

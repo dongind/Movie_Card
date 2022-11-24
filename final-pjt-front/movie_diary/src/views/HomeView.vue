@@ -2,18 +2,18 @@
   <div>
     <div class="article-page">
       <div class="article-container shadow">
-        <div class="navbar">
-          <span class="app-title">Movie Card</span>
-          <p class="user-container">
-            <span class="username">username</span>
-            <router-link :to="{'name' : 'logout'}" class="logout">Log out</router-link>
-          </p>
-        </div>
         <div class="content-container">
           <div class="card-side">
             <ArticleList/>
           </div>
           <div class="movie-side">
+            <div class="navbar">
+              <span class="app-title mb-0">MOVIECARD</span>
+              <p class="user-container mb-0">
+                <span class="username mb-0">username</span>
+                <router-link :to="{'name' : 'logout'}" class="logout mb-0"> Logout</router-link>
+              </p>
+            </div>
             <MovieList/>
           </div>
         </div>
@@ -35,13 +35,20 @@ export default {
 }
 </script>
 
-<style>
 
+<style>
 @font-face {
     font-family: 'Chosunilbo_myungjo';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+font-family: 'UhBeeJJIBBABBA';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeJJIBBABBA.woff') format('woff');
+font-weight: normal;
+font-style: normal;
 }
 * {
     padding: 0;
@@ -52,10 +59,12 @@ export default {
 .navbar {
   height: 10%;
   padding: 0;
-  padding-left: 30px;
+  padding-left: 10px;
   padding-right: 30px;
   justify-content: space-between;
+  background-color: #f8f8f8;
   color: rgb(56, 56, 56);
+  
 }
 
 .user-container {
@@ -64,8 +73,10 @@ export default {
 }
 
 .app-title {
-  font-size: 30px;
-  font-weight: bold;
+
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+
 }
 
 .username {
@@ -107,24 +118,22 @@ export default {
   flex-direction: row;
 }
 .card-side {
-  width: 65%;
+  width: 60%;
   height: 100%;
   overflow: auto;
   padding: 30px;
-  border-top-color: rgb(224, 224, 224);
+  /* border-top-color: rgb(224, 224, 224);
   border-top-style: solid;
-  border-top-width: 2px;
+  border-top-width: 2px; */
 }
 
 .movie-side {
-  width: 35%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 0.5%;
   color: black;
   /* background-color: rgb(85, 85, 85); */
   background-color: rgb(224, 224, 224);
-  border-bottom-right-radius: 20px;
 }
 </style>

@@ -1,18 +1,18 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link :to="{'name': 'login'}" > login </router-link>
-      <router-link :to="{'name': 'signup'}" > signup </router-link>
-      <router-link :to="{'name': 'logout'}" > logout </router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 
+export default {
+  name: 'App',
+
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style>
-
-</style>

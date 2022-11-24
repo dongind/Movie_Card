@@ -25,6 +25,7 @@ const routes = [
     path: '/account/login/',
     name: 'login',
     component: LoginView,
+
   },
   {
     path: '/account/logout/',
@@ -32,7 +33,7 @@ const routes = [
     component: LogoutView,
     beforeEnter(to, from, next) {
       const isLoggedIn = store.getters.isLoggedIn
-      console.log(isLoggedIn)
+      // console.log(isLoggedIn)
       if (isLoggedIn === true) {
         alert('로그아웃')
         next()
@@ -45,6 +46,7 @@ const routes = [
     path: '/account/signup/',
     name: 'signup',
     component: SignupView,
+
   },
   {
     path: '/account/signup/firstmovie/',

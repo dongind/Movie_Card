@@ -1,5 +1,5 @@
 <template>
-  <div @click="getSimilarMovie">
+  <div @click="getSimilarMovie" class="simialr-movies">
     <img :src="imgSrc" alt="" height="200px">
     <p>{{ similarMovie.title }}</p>
   </div>
@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style>
-
+.similar-movies {
+  text-align: center;
+}
 </style>

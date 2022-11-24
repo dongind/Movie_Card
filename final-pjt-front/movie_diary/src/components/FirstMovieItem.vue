@@ -1,6 +1,6 @@
 <template>
-  <div @click="selectMovieId">
-    <img :src="imgSrc" alt="" height="200px">
+  <div @click="selectMovieId" :class="{'first-movies': true, 'my-5': true, 'pt-3': true, 'selected': isClicked}">
+    <img :src="imgSrc" alt="" width="200px" :class="{'mx-auto': true, 'card-shadow': true, 'selected':isClicked}">
     <p>{{ movie.title }}</p>
   </div>   
 </template>
@@ -36,5 +36,20 @@ export default {
 </script>
 
 <style>
+.first-movies {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
 
+.first-movies:hover {
+  transform: scale(1.05)
+}
+
+.selected {
+  border: 8px, rgb(11, 94, 248), solid;
+}
 </style>

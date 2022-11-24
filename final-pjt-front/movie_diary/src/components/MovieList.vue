@@ -33,16 +33,16 @@
       </div>
       <div class="selection-list" >
         <div @click="switchUserRecommend" :class="{'selection': true, 'selected': isUserRecommend}">
-          <p>사용자 추천 </p> 
+          <p class="mb-0">사용자 추천 </p> 
         </div>
         <div @click="switchLatestRecommend" :class="{'selection': true, 'selected': isLatestRecommend}">
-          <p>최신 영화  </p> 
+          <p class="mb-0">최신 영화  </p> 
         </div>
         <div @click="switchPopularRecommend" :class="{'selection': true, 'selected': isPopularRecommend}">
-          <p>인기 영화  </p> 
+          <p class="mb-0">인기 영화  </p> 
         </div>
         <div data-bs-toggle="modal" data-bs-target="#genreModal" :class="{'selection': true, 'selected': isGenreRecommend}">
-          <p>장르별 영화 </p>
+          <p class="mb-0">장르별 영화 </p>
         </div>
       </div>
     </div>
@@ -59,22 +59,21 @@
             <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-2 mx-auto">
               <span
               v-for="genre of genres" :key="genre"
               >
-                <button data-bs-dismiss="modal" @click="getGenreMovies(genre)">{{ genre }}</button>
+                <button data-bs-dismiss="modal" @click="getGenreMovies(genre)" class="btn btn-outline-dark">{{ genre }}</button>
               </span>
+            </div>
 
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -201,13 +200,19 @@ export default {
   width: 40%;
   height: 83vh;
   color: white;
-  background-color: black;
+  background-color: rgb(28, 28, 31);
   border-bottom-right-radius: 20px;
 }
 
 .selection {
   padding-top: 15px;
   padding-bottom: 10px;
+  transition: all 0.5s;
+  cursor:pointer;
+}
+.selection:hover {
+  background-color: rgb(224, 224, 224);
+  color: black;
 }
 
 .selected {
