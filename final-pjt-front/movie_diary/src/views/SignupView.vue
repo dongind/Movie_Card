@@ -44,7 +44,7 @@
                       비밀번호를 정확히 입력해주세요.
                     </div>
                   </div>
-                  <input style="background-color:black; color:white;font-family: nanumsquare;" class="form-control" type="submit" value="회원가입"  data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getPopularMovies">
+                  <input style="background-color:black; color:white;font-family: nanumsquare;" class="form-control" type="submit" value="회원가입"  data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getRandomPopularMovies">
                 </div>
               </form>
               
@@ -53,10 +53,6 @@
         </div>
       </div>
     </form>
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getPopularMovies">
-      Launch demo modal
-    </button> -->
-    <!-- Modal -->
     <div class="modal fade" id="SelectFirstMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -66,7 +62,7 @@
           </div>
           <div class="modal-body">
             <FirstMovie
-              v-for= "movie in popularRecommend" :key="movie.id"
+              v-for= "movie in popularRandomRecommend" :key="movie.id"
               :movie="movie"
               @select-movie="selectMovie"
             />
@@ -74,7 +70,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="baseRating">Movie Rating</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="baseRating">Movie Rating</button>
           </div>
         </div>
       </div>
@@ -85,6 +81,7 @@
 <script>
 import FirstMovie from '@/components/FirstMovie.vue'
 import axios from 'axios'
+import _ from 'lodash'
 export default {
   name: 'SignupView',
   components: {
@@ -105,8 +102,8 @@ export default {
     }
   },
   computed: {
-    popularRecommend() {
-      return this.$store.state.popularRecommend
+    popularRandomRecommend() {
+      return _.sampleSize(this.$store.state.popularRandomRecommend, 20)
     },
   },
   methods: {
@@ -148,8 +145,8 @@ export default {
         console.log('no')
       }
     },
-    getPopularMovies() {
-      this.$store.dispatch('getPopularMovies')
+    getRandomPopularMovies() {
+      this.$store.dispatch('getRandomPopularMovies')
       this.key = `Token ${this.$store.state.token}`
       console.log(this.key)
     },
