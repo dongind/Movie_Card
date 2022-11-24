@@ -30,8 +30,8 @@ def card_list(request):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        # print(request.user.pk)
-        # print(request.data['movie'])
+        print(request.user.pk)
+        print(request.data['movie'])
         can_write = True
         movie = get_object_or_404(Movie, pk=request.data['movie'])
         # print(movie)
@@ -40,8 +40,7 @@ def card_list(request):
             if request.user.pk == card.user.pk:
                 if card.movie.pk == int(request.data['movie']):
                     # print(card.movie)
-                    if card.is_watched:
-                        can_write = False
+                    can_write = False
                     # print(card.is_watched)
         if can_write:
             serializer = CardSerializer(data=request.data)
