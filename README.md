@@ -61,8 +61,7 @@
 
 3. 서비스 플로우 차트
 
-![image-20221125055200784](C:\Users\82105\Desktop\마지막\final_pjt_new\README.assets\image-20221125055200784.png)
-![image-20221125055148942](https://user-images.githubusercontent.com/109324469/203861714-d13a44d5-f9fd-476b-b876-728fe383a56d.png)
+![image-20221125055200784](https://user-images.githubusercontent.com/109324469/203861812-f89c3bbb-006e-4af6-8d97-de70c027c22f.png)
 
 
 
@@ -87,7 +86,8 @@
 
 ---
 
-![image-20221125055225847](C:\Users\82105\Desktop\마지막\final_pjt_new\README.assets\image-20221125055225847.png)
+![image-20221125055225847](https://user-images.githubusercontent.com/109324469/203861840-579b4969-81f4-458b-b647-33556a9a275f.png)
+
 
 
 
@@ -95,7 +95,7 @@
 
 ---
 
-![image-20221125055148942](C:\Users\82105\Desktop\마지막\final_pjt_new\README.assets\image-20221125055148942.png)
+![image-20221125055148942](https://user-images.githubusercontent.com/109324469/203861714-d13a44d5-f9fd-476b-b876-728fe383a56d.png)
 
 
 
