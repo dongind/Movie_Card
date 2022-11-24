@@ -5,6 +5,7 @@ import ProfileView from '@/views/ProfileView'
 import LoginView from '@/views/LoginView'
 import LogoutView from '@/views/LogoutView'
 import SignupView from '@/views/SignupView'
+import FirstMovieView from '@/views/FirstMovieView'
 import store from '@/store/index.js'
 
 Vue.use(VueRouter)
@@ -44,6 +45,11 @@ const routes = [
     path: '/account/signup/',
     name: 'signup',
     component: SignupView,
+  },
+  {
+    path: '/account/signup/firstmovie/',
+    name: 'firstmovie',
+    component: FirstMovieView,
   },
 ]
 

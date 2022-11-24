@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "FirstMovie",
+  name: "FirstMovieItem",
   props: {
     movie: Object,
   },
