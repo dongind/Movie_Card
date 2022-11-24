@@ -1,13 +1,21 @@
 <template>
   <div>
-
     <div class="article-page">
       <div class="article-container shadow">
-        <div class="card-side">
-          <ArticleList/>
+        <div class="navbar">
+          <span class="app-title">Movie Card</span>
+          <p class="user-container">
+            <span class="username">username</span>
+            <router-link :to="{'name' : 'logout'}" class="logout">Log out</router-link>
+          </p>
         </div>
-        <div class="movie-side">
-          <MovieList/>
+        <div class="content-container">
+          <div class="card-side">
+            <ArticleList/>
+          </div>
+          <div class="movie-side">
+            <MovieList/>
+          </div>
         </div>
       </div>
     </div>
@@ -41,22 +49,35 @@ export default {
     box-sizing: border-box;
 }
 
-.head-title1{
-  padding-left: 1%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 30px;
-  color: rgb(240, 240, 240);
-  background-color: rgb(32, 32, 32);
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+.navbar {
+  height: 10%;
+  padding: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: space-between;
+  color: rgb(56, 56, 56);
 }
-.head-title2{
-  margin-top: 0px;
-  margin-bottom: 0px;
+
+.user-container {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.app-title {
   font-size: 30px;
-  color: black;
-  /* background-color: white; */
+  font-weight: bold;
+}
+
+.username {
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+.logout {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+  margin-right: 20px;
+  font-size: 15px;
 }
 
 .article-page {
@@ -71,39 +92,39 @@ export default {
 .article-container{
   margin-top: 50px;
   background:#f8f8f8 ;
-  width: 90%;
-  height: 85%;
+  width: 90vw;
+  height: 90%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   box-shadow: 10px black;
   border-radius: 20px;
-
 }
 
+.content-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
 .card-side {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
   width: 65%;
   height: 100%;
   overflow: auto;
-  padding: 5px;
-  /* border-right-style: solid;
-  border-right-width: 1px;
-  border-right-color: darkgray; */
+  padding: 30px;
+  border-top-color: rgb(224, 224, 224);
+  border-top-style: solid;
+  border-top-width: 2px;
 }
 
 .movie-side {
-  padding: 10px;
   width: 35%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-right: 0.5%;
   padding-left: 0.5%;
-  color: white;
-  background-color: rgb(85, 85, 85);
-  border-top-right-radius: 20px;
+  color: black;
+  /* background-color: rgb(85, 85, 85); */
+  background-color: rgb(224, 224, 224);
   border-bottom-right-radius: 20px;
 }
 </style>

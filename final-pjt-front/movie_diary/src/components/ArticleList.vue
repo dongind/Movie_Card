@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Movie Cards</h1>
     <div class="row row-cols-1 row-cols-md-6 g-2">
       <ArticleItem
         v-for="article in articles" :key="article.id"
