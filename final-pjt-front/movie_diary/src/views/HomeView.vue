@@ -1,10 +1,13 @@
 <template>
   <div>
+    <nav>
+      <router-link :to="{'name': 'login'}" > login </router-link>
+      <router-link :to="{'name': 'signup'}" > signup </router-link>
+      <router-link :to="{'name': 'logout'}" > logout </router-link>
+      <router-link > signup </router-link>
+      <router-link > logout </router-link>
+    </nav>
     <div class="article-page">
-      <nav>
-        <span class="head-title1">Movie</span>
-        <span class="head-title2">Card</span>
-      </nav>
       <div class="article-container shadow">
         <div class="card-side">
           <ArticleList/>
@@ -44,16 +47,6 @@ export default {
     box-sizing: border-box;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  border-bottom-color: rgb(179, 179, 179);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-
-}
-
 .head-title1{
   padding-left: 1%;
   margin-top: 0px;
@@ -82,19 +75,19 @@ nav {
 }
 
 .article-container{
-  margin-top: 30px;
+  margin-top: 50px;
   background:#ffffff ;
   width: 90%;
-  height: 80%;
+  height: 85%;
   display: flex;
   flex-direction: row;
   box-shadow: 10px black;
-  border-radius: 3px;
+  border-radius: 10px;
 
 }
 
 .card-side {
-  width: 70%;
+  width: 65%;
   height: 100%;
   overflow: auto;
   padding: 5px;
@@ -104,7 +97,7 @@ nav {
 }
 
 .movie-side {
-  width: 29%;
+  width: 35%;
   height: 100%;
   display: flex;
   flex-direction: column;
