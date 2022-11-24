@@ -6,7 +6,7 @@
     </div>   
     
     <!-- Modal -->
-    <div class="modal fade" :id="modalId1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade movie-detail" :id="modalId1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -425,6 +425,10 @@ export default {
 .movie-item {
   display: flex;
   flex-direction: row;
+}
+
+.movie-detail {
+  color: black;
 }
 
 </style>

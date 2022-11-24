@@ -4,8 +4,6 @@
       <router-link :to="{'name': 'login'}" > login </router-link>
       <router-link :to="{'name': 'signup'}" > signup </router-link>
       <router-link :to="{'name': 'logout'}" > logout </router-link>
-      <router-link > signup </router-link>
-      <router-link > logout </router-link>
     </nav>
     <router-view/>
   </div>
