@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="article-page">
-      <p class="head-title">Movie Card</p>
+      <nav>
+        <span class="head-title1">Movie</span>
+        <span class="head-title2">Card</span>
+      </nav>
       <div class="article-container shadow">
         <div class="card-side">
           <ArticleList/>
@@ -12,6 +15,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -34,36 +38,58 @@ export default {
     font-weight: normal;
     font-style: normal;
 }
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.head-title{
-  font-size: 50px;
-  font-family: 'Chosunilbo_myungjo';
-  margin-bottom: 20px;
-  margin-top: 20px;
+
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  border-bottom-color: rgb(179, 179, 179);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+}
+
+.head-title1{
+  padding-left: 1%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 30px;
+  color: rgb(240, 240, 240);
+  background-color: rgb(32, 32, 32);
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.head-title2{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 30px;
+  color: black;
+  /* background-color: white; */
 }
 
 .article-page {
     width: 100vw;
     height: 100vh;
-    background: #eff0f2;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .article-container{
- 
- background:#ffffff ;
- width: 90%;
- height: 80%;
- display: flex;
- flex-direction: row;
- box-shadow: 10px black;
- border-radius: 10px;
+  margin-top: 30px;
+  background:#ffffff ;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 10px black;
+  border-radius: 3px;
 
 }
 
@@ -82,7 +108,9 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-right: 0.5%;
-  margin-left: 0.5%;
+  padding-right: 0.5%;
+  padding-left: 0.5%;
+  color: white;
+  background-color: rgb(32, 32, 32);
 }
 </style>
