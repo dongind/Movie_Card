@@ -169,6 +169,13 @@ def movie_popular(request):
     return Response(popular_serializers.data)
 
 
+@api_view(['GET'])
+def movie_popularrandom(request):
+    popular_random_movies = get_list_or_404(Movie)[0:100]
+    popular_random_serializers = MovieSerializer(popular_random_movies, many=True)
+    return Response(popular_random_serializers.data)
+
+
 @api_view(['POST', 'PUT', 'DELETE'])
 def movie_rate(request):
     if request.method == 'POST':

@@ -13,6 +13,7 @@ export default new Vuex.Store({
     userRecommend: [],
     latestRecommend: [],
     popularRecommend: [],
+    popularRandomRecommend: [],
     articles: [],
   },
   getters:{
@@ -45,9 +46,9 @@ export default new Vuex.Store({
     GET_ARTICLE_LIST(state, articles) {
       state.articles = articles
     },
-    // GET_ARTICLE_MY_LIST(state, articles) {
-    //   state.articles = articles
-    // }
+    GET_RANDOM_POPULAR_MOVIES(state, movies) {
+      state.popularRandomRecommend = movies
+    }
   },
   actions: {
     // 회원가입
@@ -146,22 +147,19 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
-    // getArticleMyList(context){
-    //   axios({
-    //     method: 'get',
-    //     url:'http://127.0.0.1:8000/api/v1/cards/my/',
-    //     headers: {
-    //       'Authorization': `Token ${context.state.token}`
-    //     }
-    //   })
-    //     .then((response) => {
-    //       console.log(response)
-    //       context.commit('GET_ARTICLE_MY_LIST', response.data)
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     })
-    // }
+    getRandomPopularMovies(context){
+      axios({
+        method: 'get',
+        url:'http://127.0.0.1:8000/api/v2/movies/popular/random/',
+      })
+        .then((response) => {
+          console.log(response)
+          context.commit('GET_RANDOM_POPULAR_MOVIES', response.data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   },
   modules: {
   }
