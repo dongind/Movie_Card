@@ -44,49 +44,21 @@
                       비밀번호를 정확히 입력해주세요.
                     </div>
                   </div>
-                  <input style="background-color:black; color:white;font-family: nanumsquare;" class="form-control" type="submit" value="회원가입"  data-bs-toggle="modal" data-bs-target="#SelectFirstMovieModal" @click="getRandomPopularMovies">
+                  <input style="background-color:black; color:white;font-family: nanumsquare;" class="form-control" type="submit" value="회원가입">
                 </div>
               </form>
-              
             </div>
           </div>
         </div>
       </div>
     </form>
-    <div class="modal fade" id="SelectFirstMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Select First Movie</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <FirstMovie
-              v-for= "movie in popularRandomRecommend" :key="movie.id"
-              :movie="movie"
-              @select-movie="selectMovie"
-            />
-            선택 영화 목록 : {{ selectedMoviesId }}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="baseRating">Movie Rating</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import FirstMovie from '@/components/FirstMovie.vue'
-import axios from 'axios'
-import _ from 'lodash'
 export default {
   name: 'SignupView',
-  components: {
-    FirstMovie,
-  },
+  components: {},
   data() {
     return {
       username: null,
@@ -97,15 +69,10 @@ export default {
       isValidPassword1: false,
       // 확인용 비밀번호 일치 여부 확인
       isValidPassword2: false,
-      selectedMoviesId: [],
       key: null,
     }
   },
-  computed: {
-    popularRandomRecommend() {
-      return _.sampleSize(this.$store.state.popularRandomRecommend, 20)
-    },
-  },
+  computed: {},
   methods: {
     isValid() {
       if (this.username === null || this.username ==="") {
@@ -145,70 +112,6 @@ export default {
         console.log('no')
       }
     },
-    getRandomPopularMovies() {
-      this.$store.dispatch('getRandomPopularMovies')
-      this.key = `Token ${this.$store.state.token}`
-      console.log(this.key)
-    },
-    selectMovie(selectedMovie) {
-      if (selectedMovie.isClicked) {
-        this.selectedMoviesId.push(selectedMovie.id)
-      } else {
-        const index = this.selectedMoviesId.indexOf(selectedMovie.id)
-        this.selectedMoviesId.splice(index, 1)
-      }
-    },
-    baseRating(){
-      const API_URL = 'http://127.0.0.1:8000/api/v1/cards/'
-      const API_KEY = this.key
-      let today = new Date()
-      let year = today.getFullYear()
-      let month = today.getMonth()
-      let date = today.getDay()
-      // console.log(String(year+'-'+month+'-'+date))
-      // console.log(today)
-      // console.log(API_KEY)
-      this.$store.dispatch('getArticleList')
-      for (let id of this.selectedMoviesId) {
-        // console.log(id)
-        axios({
-          method: 'post',
-          url: API_URL,
-          headers: {'Authorization': API_KEY},
-          data: {
-            'movie': id,
-            'content': null,
-            'planned_at': String(year+'-'+month+'-'+date),
-            'is_watched': false,
-          },
-        })
-          .then(() =>{
-            console.log('됨ㅋ')
-            axios({
-              method: 'post',
-              url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
-              headers: {'Authorization': API_KEY},
-              data: {
-                'movie_pk': id,
-                'rate': 3
-              },
-            })
-              .then(() => {
-                // this.$store.dispatch('getArticleList')
-                this.$router.push('home')
-              })
-              .catch((error) => {
-                console.log(error)
-              })
-          })
-          .catch((error) => {
-            console.log(error)
-            console.log(error.response.data)
-            console.log(error.response.status)
-            console.log(error.response.headers)
-          })
-      }
-    }
   }
 }
 </script>
