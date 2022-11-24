@@ -298,6 +298,7 @@ export default {
             },
           })
             .then(() =>{
+              console.log('되나?')
               this.$store.dispatch('getArticleList')
               this.isCreated = true
             })
