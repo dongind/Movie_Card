@@ -181,11 +181,13 @@ export default {
 <style>
 .movie-list{
   width: 100%;
-  height: 65vh;
+  height: 70vh;
   display:flex;
   flex-direction: column;
   overflow: auto;
   font-family: nanumsquare;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .movie-list::-webkit-scrollbar {
     width: 8px;  /* 스크롤바의 너비 */

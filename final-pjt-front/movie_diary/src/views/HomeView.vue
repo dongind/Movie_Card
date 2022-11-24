@@ -62,7 +62,7 @@ export default {
 .article-page {
     width: 100vw;
     height: 100vh;
-    background: #ffffff;
+    background: #eff0f2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,27 +70,31 @@ export default {
 
 .article-container{
   margin-top: 50px;
-  background:#ffffff ;
+  background:#f8f8f8 ;
   width: 90%;
   height: 85%;
   display: flex;
   flex-direction: row;
   box-shadow: 10px black;
-  border-radius: 10px;
+  border-radius: 20px;
 
 }
 
 .card-side {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   width: 65%;
   height: 100%;
   overflow: auto;
   padding: 5px;
-  border-right-style: solid;
+  /* border-right-style: solid;
   border-right-width: 1px;
-  border-right-color: darkgray;
+  border-right-color: darkgray; */
 }
 
 .movie-side {
+  padding: 10px;
   width: 35%;
   height: 100%;
   display: flex;
@@ -98,6 +102,8 @@ export default {
   padding-right: 0.5%;
   padding-left: 0.5%;
   color: white;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(85, 85, 85);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 </style>
