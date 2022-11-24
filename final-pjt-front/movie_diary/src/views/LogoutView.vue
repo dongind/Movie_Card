@@ -17,14 +17,7 @@ export default {
   },
   methods: {
     logOut() {
-      if (this.isLoggedIn) {
-        this.$store.dispatch('logOut')
-        alert('로그아웃 되었습니다.')
-        this.$router.push({ name: 'home' })
-      } else {
-        alert('잘못된 접근입니다.')
-        this.$router.back()
-      }
+      this.$store.dispatch('logOut')
     }
   },
   created() {

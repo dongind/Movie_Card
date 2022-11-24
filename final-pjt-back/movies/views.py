@@ -169,7 +169,7 @@ def movie_popular(request):
     return Response(popular_serializers.data)
 
 
-@api_view(['POST', 'PUT'])
+@api_view(['POST', 'PUT', 'DELETE'])
 def movie_rate(request):
     if request.method == 'POST':
         rate_serializer = MovieRateSerializer(data=request.data)
@@ -189,3 +189,9 @@ def movie_rate(request):
         if rate_serializer.is_valid(raise_exception=True):
             rate_serializer.save()
             return Response(rate_serializer.data)
+    if request.method == 'DELETE':
+        movie_pk = int(request.data['movie_pk'])
+        movie = get_object_or_404(Movie, pk=movie_pk)
+        rate = Rate.objects.filter(user=request.user, movie=movie)[0]
+        rate.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

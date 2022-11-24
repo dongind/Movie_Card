@@ -15,7 +15,6 @@
         </div>
         <div class="card-footer text-muted">{{ plannedAt }}</div>
       </div>
-      <ArticleDetail/>
     </div>
 
     <!-- Modal -->
@@ -95,7 +94,7 @@
           </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                <button class="btn btn-danger" @click="deleteArticle" data-bs-dismiss="modal">Delete</button>
                 <button class="btn btn-primary" :data-bs-target="modalBtn1" data-bs-toggle="modal">Back to Card</button>
                 <button class="btn btn-primary" :data-bs-dismiss="{'modal': false}" @click="updateArticle">Update</button>
               </div>
@@ -107,12 +106,8 @@
 
 <script>
 import axios from 'axios'
-import ArticleDetail from '@/components/ArticleDetail.vue'
 export default {
   name: 'ArticleItem',
-  components: {
-    ArticleDetail
-  },
   props: {
     article: Object,
   },
@@ -192,7 +187,6 @@ export default {
         if (rate.user === this.article.user) {
           this.rate = rate.rate
           this.isSelected[Number(this.rate) - 1] = true
-          console.log(this.isSelected)
         }
       })
     },
@@ -268,28 +262,79 @@ export default {
             },
           })
             .then(() =>{
-              // axios 연결 => rate 기록 요청
-              axios({
-                method: 'put',
-                url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
-                headers: {'Authorization': API_KEY},
-                data: {
-                  'movie_pk': this.movieId,
-                  'rate': this.rate
-                },
-              })
-              .then(() => {
-                this.$store.dispatch('getArticleList')
-              })
-              .catch((error) => {
-                console.log(error)
-              })
+              // axios 연결 => rate 기록 요청 => 이 때 rate가 있는지 없는지 확인!
+              if (this.article.movie.rate_set.length === 0) {
+                axios({
+                  method: 'post',
+                  url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+                  headers: {'Authorization': API_KEY},
+                  data: {
+                    'movie_pk': this.movieId,
+                    'rate': this.rate
+                  },
+                })
+                .then(() => {
+                  this.$store.dispatch('getArticleList')
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+              } else {
+                axios({
+                  method: 'put',
+                  url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+                  headers: {'Authorization': API_KEY},
+                  data: {
+                    'movie_pk': this.movieId,
+                    'rate': this.rate
+                  },
+                })
+                .then(() => {
+                  this.$store.dispatch('getArticleList')
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+              }
             })
             .catch((error) => {
               console.log(error)
             })
         }
       }
+    },
+    deleteArticle() {
+      const API_URL = `http://127.0.0.1:8000/api/v1/cards/${this.article.id}/`
+      const API_KEY = `Token ${this.$store.state.token}`
+      const is_rated = this.article.movie.rate_set.length
+      axios({
+            method: 'delete',
+            url: API_URL,
+            headers: {'Authorization': API_KEY},
+      })
+        .then(() => {
+          if (is_rated) {
+            axios({
+              method: 'delete',
+              url: 'http://127.0.0.1:8000/api/v2/movies/rate/',
+              headers: {'Authorization': API_KEY},
+              data: {
+                'movie_pk': this.movieId,
+              }
+            })
+              .then((response) => {
+                console.log(response)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          }
+
+          this.$store.dispatch('getArticleList')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   },
   created() {
