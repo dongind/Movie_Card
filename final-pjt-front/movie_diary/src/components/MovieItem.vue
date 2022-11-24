@@ -304,6 +304,7 @@ export default {
             })
             .catch((error) => {
               console.log(error)
+              alert('해당 영화에 대한 카드가 이미 작성되어 있습니다.')
             })
         }
       } else {
